@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from './hooks';
+import { getProducts } from './features/productsSlice';
+import { RootState } from './store';
+import ProductList from './components/ProductList';
+import { getAllCategories } from './features/categoriesSlice';
+import CategoriesList from './components/CategoriesList';
+import Cart from './components/Cart';
+import Header from './components/Header';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const allProducts = useAppSelector((state) => state.products);
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch(getAllCategories());
+        dispatch(getProducts());
+    }, [dispatch]);
+
+    return (
+        <div className=''>
+            <Header />
+            <ProductList />
+            <hr />
+            <CategoriesList />
+            <hr />
+            <Cart />
+        </div>
+    );
 }
 
 export default App;
