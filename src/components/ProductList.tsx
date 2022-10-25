@@ -1,8 +1,6 @@
 import React from 'react';
-import { addItemToCart } from '../features/cartSlice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { useAppSelector } from '../hooks';
 import ProductCard from './ProductCard';
-import { Product } from '../features/productsSlice';
 
 const ProductList: React.FC = () => {
     const allProducts = useAppSelector((state) => state.products.allProducts);
@@ -10,35 +8,16 @@ const ProductList: React.FC = () => {
         (state) => state.products.filteredProducts
     );
 
-    const dispatch = useAppDispatch();
-
-    function handleDispath() {
-        console.log('yo');
-    }
-
     return (
-        <ul>
+        <div className='grid grid-cols-4 gap-4 px-40 py-20 '>
             {filteredByCategoryProducts.length
                 ? filteredByCategoryProducts.map((product) => {
-                      return (
-                          <li
-                              onClick={() => dispatch(addItemToCart(product))}
-                              key={product.id}
-                          >
-                              {product.title}
-                          </li>
-                      );
+                      return <ProductCard key={product.id} {...product} />;
                   })
                 : allProducts.map((product) => {
-                      return (
-                          <ProductCard
-                              onClick={() => dispatch(addItemToCart(product))}
-                              key={product.id}
-                              {...product}
-                          />
-                      );
+                      return <ProductCard key={product.id} {...product} />;
                   })}
-        </ul>
+        </div>
     );
 };
 

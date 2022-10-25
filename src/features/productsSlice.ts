@@ -4,7 +4,6 @@ import {
     isRejectedWithValue,
 } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 export interface Product {
     id: number;
@@ -14,7 +13,7 @@ export interface Product {
     category: string;
     image: string;
     rating: { rate: number; count: number };
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 interface ProductState {

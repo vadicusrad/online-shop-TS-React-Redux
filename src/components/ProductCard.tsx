@@ -1,8 +1,29 @@
 import React from 'react';
+import { addItemToCart } from '../features/cartSlice';
 import { Product } from '../features/productsSlice';
+import { useAppDispatch } from '../hooks';
 
-const ProductCard: React.FC<Product> = ({ title, id }) => {
-    return <div>{title}</div>;
+const ProductCard: React.FC<Product> = (product) => {
+    const dispatch = useAppDispatch();
+
+    return (
+        <div className='group h-96 flex flex-col items-center justify-between p-2 cursor-pointer'>
+            <img
+                className='h-4/6 object-fill'
+                src={product.image}
+                alt={product.title}
+            />
+            <span className='text-ellipsis overflow-hidden ...  h-12 w-full group-hover:text-yellow-600'>
+                {product.title}
+            </span>
+            <button
+                onClick={() => dispatch(addItemToCart(product))}
+                className='h-10 w-full text-white bg-yellow-600 hover:bg-yellow-500 opacity-0 group-hover:opacity-100'
+            >
+                В корзину
+            </button>
+        </div>
+    );
 };
 
 export default ProductCard;
