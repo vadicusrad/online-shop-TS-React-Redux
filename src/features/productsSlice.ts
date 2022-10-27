@@ -19,6 +19,7 @@ export interface Product {
 interface ProductState {
     allProducts: Product[];
     filteredProducts: Product[];
+    currentProduct: Product | null;
     loading: boolean;
     error: string | null;
 }
@@ -26,6 +27,7 @@ interface ProductState {
 const initialState: ProductState = {
     allProducts: [],
     filteredProducts: [],
+    currentProduct: null,
     loading: false,
     error: null,
 };
@@ -43,6 +45,20 @@ export const getProducts = createAsyncThunk<
     return data;
 });
 
+export const getSingleProduct = createAsyncThunk(
+    'products/getSingleProduct',
+    async function (productId: number, { rejectWithValue }) {
+        const response = await fetch(
+            `https://fakestoreapi.com/products/${productId}`
+        );
+        if (!response.ok) {
+            return rejectWithValue('Server error!');
+        }
+        const data = await response.json();
+        return data;
+    }
+);
+
 export const productSlice = createSlice({
     name: 'products',
     initialState,
@@ -52,6 +68,12 @@ export const productSlice = createSlice({
                 (item) => item.category === action.payload
             );
         },
+        // getOneProduct: (state, action: PayloadAction<number>) => {
+        //     const curProd = state.allProducts.filter(
+        //         (item) => item.id === action.payload
+        //     );
+        //     state.currentProduct = curProd;
+        // },
     },
     extraReducers: (builder) => {
         builder.addCase(getProducts.pending, (state) => {
@@ -61,6 +83,15 @@ export const productSlice = createSlice({
         builder.addCase(getProducts.fulfilled, (state, action) => {
             state.loading = false;
             state.allProducts = action.payload;
+        });
+
+        builder.addCase(getSingleProduct.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        });
+        builder.addCase(getSingleProduct.fulfilled, (state, action) => {
+            state.loading = false;
+            state.currentProduct = action.payload;
         });
     },
 });

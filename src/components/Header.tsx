@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { useAppSelector } from '../hooks';
 import { useScrollBlock } from '../hooks/useScrollBlock';
 import CategoriesList from './CategoriesList';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
     const cartItems = useAppSelector((state) => state.cart.order);
     const [categoryModal, setCategoryModal] = useState<boolean>(false);
     const [blockScroll, allowScroll] = useScrollBlock();
-
-    console.log(categoryModal);
 
     const onCloseModal = () => {
         setCategoryModal(false);
@@ -30,7 +29,12 @@ const Header: React.FC = () => {
                 </span>
             </div>
             <div className='h-28 bg-stone-100 flex justify-between items-center px-40 '>
-                <span className='text-5xl text-yellow-800'>LOGO</span>
+                <Link
+                    to='/'
+                    className='text-5xl text-yellow-800 cursor-pointer m-2'
+                >
+                    LOGO
+                </Link>
                 <span className='relative'>
                     <input
                         className='h-10 w-[600px] bg-stone-200 rounded pl-3 focus:outline-none'
@@ -69,7 +73,7 @@ const Header: React.FC = () => {
                             />
                         </svg>
                     </a>
-                    <a className='relative' href='#'>
+                    <Link className='relative' to='cart'>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             fill='none'
@@ -89,7 +93,7 @@ const Header: React.FC = () => {
                                 {cartItems.length}
                             </span>
                         ) : null}
-                    </a>
+                    </Link>
                 </span>
             </div>
             <div className='px-40 h-14 bg-yellow-600 text-white flex items-center space-x-6 font-light'>
