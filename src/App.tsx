@@ -21,8 +21,7 @@ function App() {
             <Header />
             <ProductList />
             <hr />
-            <CategoriesList />
-            <hr />
+
             <Cart />
         </div>
     );

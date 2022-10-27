@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAppSelector } from '../hooks';
+import { useScrollBlock } from '../hooks/useScrollBlock';
 import CategoriesList from './CategoriesList';
 
-const Header = () => {
+const Header: React.FC = () => {
     const cartItems = useAppSelector((state) => state.cart.order);
+    const [categoryModal, setCategoryModal] = useState<boolean>(false);
+    const [blockScroll, allowScroll] = useScrollBlock();
 
+    console.log(categoryModal);
+
+    const onCloseModal = () => {
+        setCategoryModal(false);
+        allowScroll();
+    };
+    const onOpenModal = () => {
+        setCategoryModal(true);
+        blockScroll();
+    };
     return (
         <>
             <div className=' h-10 bg-stone-200 flex justify-between items-center px-40 font-light '>
@@ -80,7 +93,12 @@ const Header = () => {
                 </span>
             </div>
             <div className='px-40 h-14 bg-yellow-600 text-white flex items-center space-x-6 font-light'>
-                <button className='bg-yellow-500 h-full px-4 flex items-center space-x-2 '>
+                <button
+                    onClick={() => {
+                        onOpenModal();
+                    }}
+                    className='bg-yellow-500 h-full px-4 flex items-center space-x-2 '
+                >
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
                         fill='none'
@@ -103,7 +121,7 @@ const Header = () => {
                 <a href='#'>Оплата</a>
                 <a href='#'>Личный кабинет</a>
             </div>
-            {/* <CategoriesList /> */}
+            {categoryModal && <CategoriesList onCloseModal={onCloseModal} />}
         </>
     );
 };

@@ -3,28 +3,53 @@ import { filterByCurrentCategory } from '../features/productsSlice';
 
 import { useAppDispatch, useAppSelector } from '../hooks';
 
-const CategoriesList = () => {
+interface ModalProp {
+    onCloseModal: () => void;
+}
+
+const CategoriesList: React.FC<ModalProp> = ({ onCloseModal }) => {
     const allCategories = useAppSelector(
         (state) => state.categories.categories
     );
+
     const dispatch = useAppDispatch();
     return (
-        <ul>
-            <h5>CategoryList</h5>
-            <li onClick={() => dispatch(filterByCurrentCategory(''))}>all</li>
-            {allCategories.map((category) => {
-                return (
-                    <li
-                        onClick={() =>
-                            dispatch(filterByCurrentCategory(category))
-                        }
-                        key={category}
-                    >
-                        {category}
-                    </li>
-                );
-            })}
-        </ul>
+        <div
+            onClick={() => onCloseModal()}
+            className='fixed top-0 left-0 w-full h-full bg-slate-800/25 '
+        >
+            <ul
+                onClick={(e) => e.stopPropagation()}
+                className='absolute top-52 left-40 w-2/6 h-2/3 bg-white opacity-100 p-10 flex space-x-5 flex-col drop-shadow-lg
+
+                '
+            >
+                <h3 className='font-semibold'>Категории</h3>
+                <li
+                    className='w-40 h-16 m-2 flex justify-left items-center cursor-pointer '
+                    onClick={() => {
+                        dispatch(filterByCurrentCategory(''));
+                        onCloseModal();
+                    }}
+                >
+                    all
+                </li>
+                {allCategories.map((category) => {
+                    return (
+                        <li
+                            className='w-40 h-16 m-2 flex justify-left items-center cursor-pointer'
+                            onClick={() => {
+                                dispatch(filterByCurrentCategory(category));
+                                onCloseModal();
+                            }}
+                            key={category}
+                        >
+                            {category}
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
     );
 };
 
