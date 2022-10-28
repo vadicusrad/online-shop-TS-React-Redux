@@ -9,14 +9,16 @@ const ProductList: React.FC = () => {
     );
 
     return (
-        <div className='grid grid-cols-4 gap-4 px-40 py-20 '>
-            {filteredByCategoryProducts.length
-                ? filteredByCategoryProducts.map((product) => {
-                      return <ProductCard key={product.id} {...product} />;
-                  })
-                : allProducts.map((product) => {
-                      return <ProductCard key={product.id} {...product} />;
-                  })}
+        <div className='px-40 py-20 '>
+            <div className='container mx-auto grid grid-cols-4 justify-items-center gap-4 max-w-7xl '>
+                {filteredByCategoryProducts.length
+                    ? filteredByCategoryProducts.map((product) => {
+                          return <ProductCard key={product.id} {...product} />;
+                      })
+                    : allProducts.map((product) => {
+                          return <ProductCard key={product.id} {...product} />;
+                      })}
+            </div>
         </div>
     );
 };

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Product } from './productsSlice';
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
     counter: number;
 }
 

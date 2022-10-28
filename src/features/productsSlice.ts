@@ -68,12 +68,6 @@ export const productSlice = createSlice({
                 (item) => item.category === action.payload
             );
         },
-        // getOneProduct: (state, action: PayloadAction<number>) => {
-        //     const curProd = state.allProducts.filter(
-        //         (item) => item.id === action.payload
-        //     );
-        //     state.currentProduct = curProd;
-        // },
     },
     extraReducers: (builder) => {
         builder.addCase(getProducts.pending, (state) => {
@@ -86,6 +80,7 @@ export const productSlice = createSlice({
         });
 
         builder.addCase(getSingleProduct.pending, (state) => {
+            state.currentProduct = null;
             state.loading = true;
             state.error = null;
         });

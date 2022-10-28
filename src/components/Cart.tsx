@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-    changeCartItemCounterDown,
-    changeCartItemCounterUp,
-    deleteItemFromCart,
-} from '../features/cartSlice';
-
 import { useAppDispatch, useAppSelector } from '../hooks';
+import CartListItem from './CartListItem';
 
 const Cart: React.FC = () => {
     const dispatch = useAppDispatch();
@@ -19,40 +14,35 @@ const Cart: React.FC = () => {
         return sum.toFixed(2);
     };
 
+    const cartItemsList = () => {
+        return (
+            <div className='flex items-start'>
+                <div className='w-2/3'>
+                    {cartItems &&
+                        cartItems.map((item) => {
+                            return <CartListItem {...item} key={item.id} />;
+                        })}
+                </div>
+                <div className='w-1/3 bg-slate-200 p-6 flex items-center flex-col '>
+                    <span className='text-2xl mb-4'>
+                        Итого к оплате: ${cartItemsSumm()}
+                    </span>
+                    <button className='h-10 w-full text-white bg-yellow-600 hover:bg-yellow-500 rounded-sm'>
+                        Оформить заказ
+                    </button>
+                </div>
+            </div>
+        );
+    };
+
     return (
-        <div>
-            <h5>Cart</h5>
-            {cartItems &&
-                cartItems.map((item) => {
-                    return (
-                        <li key={item.id}>
-                            {item.title}
-                            <span
-                                onClick={() =>
-                                    dispatch(deleteItemFromCart(item.id))
-                                }
-                            >
-                                <span>{item.counter}</span>x
-                            </span>
-                            <span
-                                onClick={() =>
-                                    dispatch(changeCartItemCounterUp(item.id))
-                                }
-                            >
-                                One more
-                            </span>
-                            <span
-                                onClick={() =>
-                                    dispatch(changeCartItemCounterDown(item.id))
-                                }
-                            >
-                                One minus
-                            </span>
-                        </li>
-                    );
-                })}
-            <span>Итоговая сумма: {cartItemsSumm()}</span>
-            <span>Количество позиций в корзине: {cartItems.length}</span>
+        <div className='container mx-auto max-w-7xl py-10'>
+            <h1 className='text-4xl mb-4'>Корзина</h1>
+            {cartItems.length ? (
+                cartItemsList()
+            ) : (
+                <p className='mt-14'>Ваша корзина пуста</p>
+            )}
         </div>
     );
 };

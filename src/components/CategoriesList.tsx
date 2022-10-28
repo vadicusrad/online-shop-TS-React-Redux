@@ -1,6 +1,6 @@
 import React from 'react';
 import { filterByCurrentCategory } from '../features/productsSlice';
-
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks';
 
 interface ModalProp {
@@ -16,7 +16,7 @@ const CategoriesList: React.FC<ModalProp> = ({ onCloseModal }) => {
     return (
         <div
             onClick={() => onCloseModal()}
-            className='fixed top-0 left-0 w-full h-full bg-slate-800/25 '
+            className='fixed top-0 left-0 w-full h-full bg-slate-800/25 z-40'
         >
             <ul
                 onClick={(e) => e.stopPropagation()}
@@ -25,7 +25,8 @@ const CategoriesList: React.FC<ModalProp> = ({ onCloseModal }) => {
                 '
             >
                 <h3 className='font-semibold'>Категории</h3>
-                <li
+                <Link
+                    to='/'
                     className='w-40 h-16 m-2 flex justify-left items-center cursor-pointer '
                     onClick={() => {
                         dispatch(filterByCurrentCategory(''));
@@ -33,10 +34,11 @@ const CategoriesList: React.FC<ModalProp> = ({ onCloseModal }) => {
                     }}
                 >
                     all
-                </li>
+                </Link>
                 {allCategories.map((category) => {
                     return (
-                        <li
+                        <Link
+                            to='/'
                             className='w-40 h-16 m-2 flex justify-left items-center cursor-pointer'
                             onClick={() => {
                                 dispatch(filterByCurrentCategory(category));
@@ -45,7 +47,7 @@ const CategoriesList: React.FC<ModalProp> = ({ onCloseModal }) => {
                             key={category}
                         >
                             {category}
-                        </li>
+                        </Link>
                     );
                 })}
             </ul>
