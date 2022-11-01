@@ -20,6 +20,7 @@ interface ProductState {
     allProducts: Product[];
     filteredProducts: Product[];
     currentProduct: Product | null;
+
     loading: boolean;
     error: string | null;
 }
@@ -28,6 +29,7 @@ const initialState: ProductState = {
     allProducts: [],
     filteredProducts: [],
     currentProduct: null,
+
     loading: false,
     error: null,
 };
@@ -68,6 +70,12 @@ export const productSlice = createSlice({
                 (item) => item.category === action.payload
             );
         },
+        filterBySearchString: (state, action: PayloadAction<string>) => {
+            console.log(action.payload);
+            state.filteredProducts = state.allProducts.filter((item) =>
+                item.title.toLowerCase().includes(action.payload.toLowerCase())
+            );
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(getProducts.pending, (state) => {
@@ -91,6 +99,7 @@ export const productSlice = createSlice({
     },
 });
 
-export const { filterByCurrentCategory } = productSlice.actions;
+export const { filterByCurrentCategory, filterBySearchString } =
+    productSlice.actions;
 
 export default productSlice.reducer;

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useAppSelector } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { useScrollBlock } from '../hooks/useScrollBlock';
 import CategoriesList from './CategoriesList';
 import { Link } from 'react-router-dom';
+import { filterBySearchString } from '../features/productsSlice';
 
 const Header: React.FC = () => {
     const cartItems = useAppSelector((state) => state.cart.order);
@@ -17,6 +18,12 @@ const Header: React.FC = () => {
         setCategoryModal(true);
         blockScroll();
     };
+
+    const dispatch = useAppDispatch();
+
+    function handleSearchStringChange(e: { target: { value: string } }) {
+        dispatch(filterBySearchString(e.target.value));
+    }
     return (
         <>
             <div className=' h-10 bg-stone-200 flex justify-between items-center px-40 font-light '>
@@ -40,6 +47,7 @@ const Header: React.FC = () => {
                         className='h-10 w-[600px] bg-stone-200 rounded pl-3 focus:outline-none'
                         type='text'
                         placeholder='Поиск'
+                        onChange={handleSearchStringChange}
                     />
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
@@ -47,7 +55,7 @@ const Header: React.FC = () => {
                         viewBox='0 0 24 24'
                         strokeWidth='1.5'
                         stroke='currentColor'
-                        className='w-6 h-6 absolute top-2 right-5 cursor-pointer text-yellow-600'
+                        className='w-6 h-6 absolute top-2 right-5 text-yellow-600'
                     >
                         <path
                             strokeLinecap='round'
