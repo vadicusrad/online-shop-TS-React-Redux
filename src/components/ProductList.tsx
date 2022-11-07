@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppSelector } from '../hooks';
 import ProductCard from './ProductCard';
+import SortingTools from './SortingTools';
 
 const ProductList: React.FC = () => {
     const allProducts = useAppSelector((state) => state.products.allProducts);
@@ -9,8 +10,9 @@ const ProductList: React.FC = () => {
     );
 
     return (
-        <div className='px-40 py-20 '>
-            <div className='container mx-auto grid grid-cols-4 justify-items-center gap-4 max-w-7xl '>
+        <div className='px-40'>
+            <SortingTools />
+            <div className='container mx-auto grid grid-cols-4 justify-items-center gap-4 max-w-7xl py-14'>
                 {filteredByCategoryProducts.length
                     ? filteredByCategoryProducts.map((product) => {
                           return <ProductCard key={product.id} {...product} />;

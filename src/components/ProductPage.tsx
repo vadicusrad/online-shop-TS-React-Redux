@@ -6,18 +6,21 @@ import { useAppDispatch, useAppSelector } from '../hooks';
 
 const ProductPage: React.FC = () => {
     let params = useParams();
-    const curenntProductId = Number(params.id);
+    const currentProductId = Number(params.id);
     const dispatch = useAppDispatch();
     const currentProduct = useAppSelector(
         (state) => state.products.currentProduct
     );
     const loading = useAppSelector((state) => state.products.loading);
-    console.log('loading ===', loading);
+
     useEffect(() => {
-        dispatch(getSingleProduct(curenntProductId));
+        dispatch(getSingleProduct(currentProductId));
     }, [dispatch]);
     return (
         <>
+            {loading && (
+                <p className='text-center mt-40 text-4xl'>Loading...</p>
+            )}
             {currentProduct && (
                 <div className='flex px-40 py-20 h-screen '>
                     <div className='w-1/2 flex justify-center'>

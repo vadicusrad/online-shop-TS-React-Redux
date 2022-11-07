@@ -10,8 +10,8 @@ export interface Product {
     title: string;
     price: number;
     description: string;
-    category: string;
     image: string;
+    category: string;
     rating: { rate: number; count: number };
     onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
@@ -20,7 +20,7 @@ interface ProductState {
     allProducts: Product[];
     filteredProducts: Product[];
     currentProduct: Product | null;
-
+    currentSortCondition: string;
     loading: boolean;
     error: string | null;
 }
@@ -29,7 +29,7 @@ const initialState: ProductState = {
     allProducts: [],
     filteredProducts: [],
     currentProduct: null,
-
+    currentSortCondition: '',
     loading: false,
     error: null,
 };
@@ -69,12 +69,43 @@ export const productSlice = createSlice({
             state.filteredProducts = state.allProducts.filter(
                 (item) => item.category === action.payload
             );
+            state.currentSortCondition = '';
         },
         filterBySearchString: (state, action: PayloadAction<string>) => {
-            console.log(action.payload);
             state.filteredProducts = state.allProducts.filter((item) =>
                 item.title.toLowerCase().includes(action.payload.toLowerCase())
             );
+            state.currentSortCondition = '';
+        },
+        sortProducts: (state, action: PayloadAction<string>) => {
+            state.currentSortCondition = action.payload;
+            // создаю переменную для сортировки в которую кладу все продукты
+            let arrayToSort = state.allProducts;
+            // если выбрана котегория продуктов то в переменную для сортировки кладу продукты из выбранной категории
+            if (state.filteredProducts.length) {
+                arrayToSort = state.filteredProducts;
+            }
+            // три типа сортировки в зависимости от типа экшена
+            if (state.currentSortCondition === 'descending') {
+                arrayToSort = arrayToSort.sort(
+                    (prev, next) => next.price - prev.price
+                );
+            }
+            if (state.currentSortCondition === 'ascending') {
+                arrayToSort = arrayToSort.sort(
+                    (prev, next) => prev.price - next.price
+                );
+            }
+            if (state.currentSortCondition === 'byrating') {
+                arrayToSort = arrayToSort.sort(
+                    (prev, next) => next.rating.rate - prev.rating.rate
+                );
+            }
+            if (state.currentSortCondition === '') {
+                arrayToSort = arrayToSort.sort(
+                    (prev, next) => prev.id - next.id
+                );
+            }
         },
     },
     extraReducers: (builder) => {
@@ -99,7 +130,7 @@ export const productSlice = createSlice({
     },
 });
 
-export const { filterByCurrentCategory, filterBySearchString } =
+export const { filterByCurrentCategory, filterBySearchString, sortProducts } =
     productSlice.actions;
 
 export default productSlice.reducer;

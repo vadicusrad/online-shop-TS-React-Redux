@@ -1,9 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { ExecSyncOptionsWithStringEncoding } from 'child_process';
 
-type Category = string;
+type ICategory = string;
+
+// {
+//     id: number;
+//     name: string;
+//     image: string;
+// };
 
 type CategoryList = {
-    categories: Category[];
+    categories: ICategory[];
     loading: boolean;
     error: string | null;
 };
@@ -15,7 +22,7 @@ const initialState: CategoryList = {
 };
 
 export const getAllCategories = createAsyncThunk<
-    Category[],
+    ICategory[],
     undefined,
     { rejectValue: string }
 >('categories/getAllCategories', async function (_, { rejectWithValue }) {
