@@ -72,6 +72,7 @@ export const productSlice = createSlice({
             state.currentSortCondition = '';
         },
         filterBySearchString: (state, action: PayloadAction<string>) => {
+            // здесь надо доработать, при вводе абракадабры выводится просто полный список продуктов, я хочу чтобы выводилось - товары не найдены.
             state.filteredProducts = state.allProducts.filter((item) =>
                 item.title.toLowerCase().includes(action.payload.toLowerCase())
             );

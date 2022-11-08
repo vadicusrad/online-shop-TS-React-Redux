@@ -16,7 +16,7 @@ const Cart: React.FC = () => {
 
     const cartItemsList = () => {
         return (
-            <div className='flex items-start'>
+            <div className='flex items-start space-x-4'>
                 <div className='w-2/3'>
                     {cartItems &&
                         cartItems.map((item) => {

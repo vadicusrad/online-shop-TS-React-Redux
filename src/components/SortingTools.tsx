@@ -9,8 +9,10 @@ const SortingTools = () => {
     }
 
     return (
-        <div className='bg-gray-500 h-8 flex align-center'>
+        <div className='mt-2 h-8 flex align-center'>
+            <span>Сортировка:</span>
             <select
+                className='h-6 border ml-2'
                 name='sortSelect'
                 id='sortSelect'
                 onChange={(e) => handleChangeSelect(e.target.value)}
