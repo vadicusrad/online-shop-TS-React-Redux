@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { useScrollBlock } from '../hooks/useScrollBlock';
 import CategoriesList from './CategoriesList';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { filterBySearchString, sortProducts } from '../features/productsSlice';
 import SortingTools from './SortingTools';
 
@@ -11,6 +11,7 @@ const Header: React.FC = () => {
     const [categoryModal, setCategoryModal] = useState<boolean>(false);
     const [searchInput, setSearchInput] = useState('');
     const [blockScroll, allowScroll] = useScrollBlock();
+    let navigate = useNavigate();
 
     const onCloseModal = () => {
         setCategoryModal(false);
@@ -24,9 +25,19 @@ const Header: React.FC = () => {
     const dispatch = useAppDispatch();
 
     function handleSearchStringChange() {
-        console.log(searchInput);
-        dispatch(filterBySearchString(searchInput));
-        // sortProducts('');
+        if (searchInput.length) {
+            dispatch(filterBySearchString(searchInput));
+            navigate('search');
+        }
+    }
+
+    function onKeyEnter(eKey: string) {
+        if (eKey === 'Enter') {
+            if (searchInput.length) {
+                dispatch(filterBySearchString(searchInput));
+                navigate('search');
+            }
+        }
     }
     return (
         <>
@@ -53,23 +64,24 @@ const Header: React.FC = () => {
                         type='text'
                         placeholder='Поиск'
                         onChange={(e) => setSearchInput(e.target.value)}
+                        onKeyDown={(e) => onKeyEnter(e.key)}
                     />
-                    <Link to='search' onClick={handleSearchStringChange}>
-                        <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            fill='none'
-                            viewBox='0 0 24 24'
-                            strokeWidth='1.5'
-                            stroke='currentColor'
-                            className='w-6 h-6 absolute top-2 right-5 text-yellow-600'
-                        >
-                            <path
-                                strokeLinecap='round'
-                                strokeLinejoin='round'
-                                d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
-                            />
-                        </svg>
-                    </Link>
+
+                    <svg
+                        onClick={handleSearchStringChange}
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        strokeWidth='1.5'
+                        stroke='currentColor'
+                        className='w-6 h-6 absolute top-2 right-5 text-yellow-600 cursor-pointer '
+                    >
+                        <path
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
+                        />
+                    </svg>
                 </span>
                 <span className='flex'>
                     <Link to='personal-area'>
