@@ -9,6 +9,8 @@ import Cart from './components/Cart';
 import Header from './components/Header';
 import { Routes, Route } from 'react-router-dom';
 import ProductPage from './components/ProductPage';
+import SearchPage from './components/SearchPage';
+import NotFoundPage from './components/NotFoundPage';
 
 function App() {
     // const allProducts = useAppSelector((state) => state.products);
@@ -25,6 +27,8 @@ function App() {
                 <Route index element={<ProductList />} />
                 <Route path='cart' element={<Cart />} />
                 <Route path='product:id' element={<ProductPage />} />
+                <Route path='search' element={<SearchPage />} />
+                <Route path='*' element={<NotFoundPage />} />
             </Routes>
         </div>
     );

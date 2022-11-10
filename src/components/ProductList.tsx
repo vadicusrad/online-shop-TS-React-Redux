@@ -11,7 +11,6 @@ const ProductList: React.FC = () => {
 
     return (
         <div className='px-40'>
-            <SortingTools />
             <div className='container mx-auto grid grid-cols-4 justify-items-center gap-4 max-w-7xl py-14'>
                 {filteredByCategoryProducts.length
                     ? filteredByCategoryProducts.map((product) => {

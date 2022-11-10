@@ -1,5 +1,8 @@
 import React from 'react';
-import { filterByCurrentCategory } from '../features/productsSlice';
+import {
+    filterByCurrentCategory,
+    sortProducts,
+} from '../features/productsSlice';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks';
 
@@ -42,6 +45,7 @@ const CategoriesList: React.FC<ModalProp> = ({ onCloseModal }) => {
                             className='w-40 h-16 m-2 flex justify-left items-center cursor-pointer'
                             onClick={() => {
                                 dispatch(filterByCurrentCategory(category));
+
                                 onCloseModal();
                             }}
                             key={category}

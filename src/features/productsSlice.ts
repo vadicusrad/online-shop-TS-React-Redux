@@ -29,7 +29,7 @@ const initialState: ProductState = {
     allProducts: [],
     filteredProducts: [],
     currentProduct: null,
-    currentSortCondition: '',
+    currentSortCondition: 'default',
     loading: false,
     error: null,
 };
@@ -69,17 +69,17 @@ export const productSlice = createSlice({
             state.filteredProducts = state.allProducts.filter(
                 (item) => item.category === action.payload
             );
-            state.currentSortCondition = '';
+            state.currentSortCondition = 'default';
         },
         filterBySearchString: (state, action: PayloadAction<string>) => {
-            // здесь надо доработать, при вводе абракадабры выводится просто полный список продуктов, я хочу чтобы выводилось - товары не найдены.
             state.filteredProducts = state.allProducts.filter((item) =>
                 item.title.toLowerCase().includes(action.payload.toLowerCase())
             );
-            state.currentSortCondition = '';
+            state.currentSortCondition = 'default';
         },
         sortProducts: (state, action: PayloadAction<string>) => {
             state.currentSortCondition = action.payload;
+
             // создаю переменную для сортировки в которую кладу все продукты
             let arrayToSort = state.allProducts;
             // если выбрана котегория продуктов то в переменную для сортировки кладу продукты из выбранной категории
@@ -102,7 +102,7 @@ export const productSlice = createSlice({
                     (prev, next) => next.rating.rate - prev.rating.rate
                 );
             }
-            if (state.currentSortCondition === '') {
+            if (state.currentSortCondition === 'default') {
                 arrayToSort = arrayToSort.sort(
                     (prev, next) => prev.id - next.id
                 );

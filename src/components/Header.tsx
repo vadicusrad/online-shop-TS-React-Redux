@@ -3,11 +3,13 @@ import { useAppDispatch, useAppSelector } from '../hooks';
 import { useScrollBlock } from '../hooks/useScrollBlock';
 import CategoriesList from './CategoriesList';
 import { Link } from 'react-router-dom';
-import { filterBySearchString } from '../features/productsSlice';
+import { filterBySearchString, sortProducts } from '../features/productsSlice';
+import SortingTools from './SortingTools';
 
 const Header: React.FC = () => {
     const cartItems = useAppSelector((state) => state.cart.order);
     const [categoryModal, setCategoryModal] = useState<boolean>(false);
+    const [searchInput, setSearchInput] = useState('');
     const [blockScroll, allowScroll] = useScrollBlock();
 
     const onCloseModal = () => {
@@ -21,51 +23,56 @@ const Header: React.FC = () => {
 
     const dispatch = useAppDispatch();
 
-    function handleSearchStringChange(e: { target: { value: string } }) {
-        dispatch(filterBySearchString(e.target.value));
+    function handleSearchStringChange() {
+        console.log(searchInput);
+        dispatch(filterBySearchString(searchInput));
+        // sortProducts('');
     }
     return (
         <>
             <div className=' h-10 bg-stone-200 flex justify-between items-center px-40 font-light '>
                 <a href='tel:+7 800 800 80 80'>+7 800 800 80 80</a>
                 <span className='flex space-x-4'>
-                    <a href='#'>Доставка и оплата</a>
-                    <a href='#'>Пункты выдачи</a>
-                    <a href='#'>Магазины</a>
-                    <a href='#'>Возврат товаров</a>
+                    <a href='delivery'>Доставка</a>
+                    <a href='payment'>Оплата</a>
+                    <a href='pick-up-points'>Пункты выдачи</a>
+                    <a href='shops'>Магазины</a>
+                    <a href='return-goods'>Возврат товаров</a>
                 </span>
             </div>
             <div className='h-28 bg-stone-100 flex justify-between items-center px-40 '>
-                <Link
-                    to='/'
+                <a
+                    href='/'
                     className='text-5xl text-yellow-800 cursor-pointer m-2'
                 >
                     LOGO
-                </Link>
+                </a>
                 <span className='relative'>
                     <input
                         className='h-10 w-[600px] bg-stone-200 rounded pl-3 focus:outline-none'
                         type='text'
                         placeholder='Поиск'
-                        onChange={handleSearchStringChange}
+                        onChange={(e) => setSearchInput(e.target.value)}
                     />
-                    <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        strokeWidth='1.5'
-                        stroke='currentColor'
-                        className='w-6 h-6 absolute top-2 right-5 text-yellow-600'
-                    >
-                        <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
-                        />
-                    </svg>
+                    <Link to='search' onClick={handleSearchStringChange}>
+                        <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            strokeWidth='1.5'
+                            stroke='currentColor'
+                            className='w-6 h-6 absolute top-2 right-5 text-yellow-600'
+                        >
+                            <path
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                                d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
+                            />
+                        </svg>
+                    </Link>
                 </span>
                 <span className='flex'>
-                    <a href='#'>
+                    <Link to='personal-area'>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             fill='none'
@@ -80,7 +87,7 @@ const Header: React.FC = () => {
                                 d='M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z'
                             />
                         </svg>
-                    </a>
+                    </Link>
                     <Link className='relative' to='cart'>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
@@ -127,12 +134,13 @@ const Header: React.FC = () => {
                     </svg>
                     <span className='font-normal'>Каталог</span>
                 </button>
-                <a href='#'>О компании</a>
-                <a href='#'>Контакты</a>
-                <a href='#'>Доставка</a>
-                <a href='#'>Оплата</a>
-                <a href='#'>Личный кабинет</a>
+                <a href='about'>О компании</a>
+                <a href='contacts'>Контакты</a>
+                <a href='delivery'>Доставка</a>
+                <a href='payment'>Оплата</a>
+                <a href='personal-area'>Личный кабинет</a>
             </div>
+            <SortingTools />
             {categoryModal && <CategoriesList onCloseModal={onCloseModal} />}
         </>
     );
