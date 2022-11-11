@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { addItemToCart } from '../features/cartSlice';
 import { getSingleProduct } from '../features/productsSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
+import loadingIcon from '../icons/loadingIcon';
 
 const ProductPage: React.FC = () => {
     let params = useParams();
@@ -11,15 +12,15 @@ const ProductPage: React.FC = () => {
     const currentProduct = useAppSelector(
         (state) => state.products.currentProduct
     );
-    const loading = useAppSelector((state) => state.products.loading);
+    const loadingStatus = useAppSelector((state) => state.products.loading);
 
     useEffect(() => {
         dispatch(getSingleProduct(currentProductId));
     }, [dispatch]);
     return (
         <>
-            {loading && (
-                <p className='text-center mt-40 text-4xl'>Loading...</p>
+            {loadingStatus && (
+                <div className='flex justify-center'>{loadingIcon}</div>
             )}
             {currentProduct && (
                 <div className='flex px-40 py-20 h-screen '>
