@@ -11,6 +11,7 @@ import { Routes, Route } from 'react-router-dom';
 import ProductPage from './components/ProductPage';
 import SearchPage from './components/SearchPage';
 import NotFoundPage from './components/NotFoundPage';
+import Footer from './components/Footer';
 
 function App() {
     // const allProducts = useAppSelector((state) => state.products);
@@ -30,6 +31,7 @@ function App() {
                 <Route path='search' element={<SearchPage />} />
                 <Route path='*' element={<NotFoundPage />} />
             </Routes>
+            <Footer />
         </div>
     );
 }
