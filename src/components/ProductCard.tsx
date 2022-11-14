@@ -29,7 +29,7 @@ const ProductCard: React.FC<Product> = (product) => {
 
             <button
                 onClick={() => handleAdditemInCart()}
-                className='h-10 w-full text-white bg-yellow-600 hover:bg-yellow-500 opacity-0 group-hover:opacity-100'
+                className='h-10 w-full text-white bg-yellow-600 opacity-0 group-hover:opacity-100 z-1'
             >
                 В корзину
             </button>

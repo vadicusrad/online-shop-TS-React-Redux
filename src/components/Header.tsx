@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { useScrollBlock } from '../hooks/useScrollBlock';
 import CategoriesList from './CategoriesList';
 import { Link, useNavigate } from 'react-router-dom';
-import { filterBySearchString, sortProducts } from '../features/productsSlice';
+import {
+    filterByCurrentCategory,
+    filterBySearchString,
+    sortProducts,
+} from '../features/productsSlice';
 import SortingTools from './SortingTools';
+import { useScrollBlock } from '../hooks/useScrollBlock';
 
 const Header: React.FC = () => {
     const cartItems = useAppSelector((state) => state.cart.order);
-    const [categoryModal, setCategoryModal] = useState<boolean>(false);
     const [searchInput, setSearchInput] = useState('');
+    const [categoryModal, setCategoryModal] = useState<boolean>(false);
     const [blockScroll, allowScroll] = useScrollBlock();
+
     let navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const onCloseModal = () => {
         setCategoryModal(false);
@@ -21,8 +27,6 @@ const Header: React.FC = () => {
         setCategoryModal(true);
         blockScroll();
     };
-
-    const dispatch = useAppDispatch();
 
     function handleSearchStringChange() {
         if (searchInput.length) {
@@ -39,6 +43,7 @@ const Header: React.FC = () => {
             }
         }
     }
+
     return (
         <>
             <div className=' h-10 bg-stone-200 flex justify-between items-center px-40 font-light '>
@@ -123,12 +128,12 @@ const Header: React.FC = () => {
                     </Link>
                 </span>
             </div>
-            <div className='px-40 h-14 bg-yellow-600 text-white flex items-center space-x-6 font-light'>
-                <button
+            <div className='px-40 h-14 bg-yellow-600 text-white flex items-center space-x-6 font-light sticky top-0'>
+                <div
                     onClick={() => {
                         onOpenModal();
                     }}
-                    className='bg-yellow-500 h-full px-4 flex items-center space-x-2 '
+                    className='bg-yellow-500 h-full px-4 flex items-center '
                 >
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
@@ -144,8 +149,13 @@ const Header: React.FC = () => {
                             d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
                         />
                     </svg>
-                    <span className='font-normal'>Каталог</span>
-                </button>
+
+                    <CategoriesList
+                        categoryModal={categoryModal}
+                        onCloseModal={onCloseModal}
+                    />
+                </div>
+
                 <a href='about'>О компании</a>
                 <a href='contacts'>Контакты</a>
                 <a href='delivery'>Доставка</a>
@@ -153,7 +163,6 @@ const Header: React.FC = () => {
                 <a href='personal-area'>Личный кабинет</a>
             </div>
             <SortingTools />
-            {categoryModal && <CategoriesList onCloseModal={onCloseModal} />}
         </>
     );
 };

@@ -8,55 +8,66 @@ import { useAppDispatch, useAppSelector } from '../hooks';
 
 interface ModalProp {
     onCloseModal: () => void;
+    categoryModal: boolean;
 }
 
-const CategoriesList: React.FC<ModalProp> = ({ onCloseModal }) => {
+const CategoriesList: React.FC<ModalProp> = ({
+    onCloseModal,
+    categoryModal,
+}) => {
     const allCategories = useAppSelector(
         (state) => state.categories.categories
     );
 
     const dispatch = useAppDispatch();
-    return (
-        <div
-            onClick={() => onCloseModal()}
-            className='fixed top-0 left-0 w-full h-full bg-slate-800/25 z-40'
-        >
-            <ul
-                onClick={(e) => e.stopPropagation()}
-                className='absolute top-52 left-40 w-2/6 h-2/3 bg-white opacity-100 p-10 flex space-x-5 flex-col drop-shadow-lg
 
-                '
-            >
-                <h3 className='font-semibold'>Категории</h3>
-                <Link
-                    to='/'
-                    className='w-40 h-16 m-2 flex justify-left items-center cursor-pointer '
-                    onClick={() => {
-                        dispatch(filterByCurrentCategory(''));
+    if (categoryModal) {
+        return (
+            <>
+                <div
+                    onClick={(e) => {
+                        e.stopPropagation();
                         onCloseModal();
                     }}
+                    className='fixed top-0 left-0 w-full h-full bg-slate-800 opacity-25 z-100 text-black pointer-events-auto'
+                />
+                <ul
+                    onClick={(e) => e.stopPropagation()}
+                    className='absolute top-14 left-40 w-2/6 bg-white opacity-100 py-5 px-5 flex  flex-col drop-shadow-lg text-black z-40'
                 >
-                    all
-                </Link>
-                {allCategories.map((category) => {
-                    return (
-                        <Link
-                            to='/'
-                            className='w-40 h-16 m-2 flex justify-left items-center cursor-pointer'
-                            onClick={() => {
-                                dispatch(filterByCurrentCategory(category));
+                    <h3 className='font-semibold'>Категории</h3>
+                    <Link
+                        to='/'
+                        className='w-full h-16 m-2 flex justify-left items-center cursor-pointer hover:bg-slate-300 px-4'
+                        onClick={() => {
+                            dispatch(filterByCurrentCategory(''));
+                            onCloseModal();
+                        }}
+                    >
+                        all
+                    </Link>
+                    {allCategories.map((category) => {
+                        return (
+                            <Link
+                                to='/'
+                                className='w-full h-16 flex justify-left items-center cursor-pointer hover:bg-slate-300 px-4'
+                                onClick={() => {
+                                    dispatch(filterByCurrentCategory(category));
 
-                                onCloseModal();
-                            }}
-                            key={category}
-                        >
-                            {category}
-                        </Link>
-                    );
-                })}
-            </ul>
-        </div>
-    );
+                                    onCloseModal();
+                                }}
+                                key={category}
+                            >
+                                {category}
+                            </Link>
+                        );
+                    })}
+                </ul>
+                {/* // </div> */}
+            </>
+        );
+    }
+    return null;
 };
 
 export default CategoriesList;

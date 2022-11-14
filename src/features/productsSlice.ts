@@ -4,6 +4,7 @@ import {
     isRejectedWithValue,
 } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { store } from '../store';
 
 export interface Product {
     id: number;
@@ -69,14 +70,14 @@ export const productSlice = createSlice({
             state.filteredProducts = state.allProducts.filter(
                 (item) => item.category === action.payload
             );
-            // state.currentSortCondition = 'default';
         },
+
         filterBySearchString: (state, action: PayloadAction<string>) => {
             state.filteredProducts = state.allProducts.filter((item) =>
                 item.title.toLowerCase().includes(action.payload.toLowerCase())
             );
-            // state.currentSortCondition = 'default';
         },
+
         sortProducts: (state, action: PayloadAction<string>) => {
             state.currentSortCondition = action.payload;
 

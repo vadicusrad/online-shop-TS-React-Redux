@@ -1,22 +1,18 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ExecSyncOptionsWithStringEncoding } from 'child_process';
 
 type ICategory = string;
 
-// {
-//     id: number;
-//     name: string;
-//     image: string;
-// };
-
 type CategoryList = {
     categories: ICategory[];
+
     loading: boolean;
     error: string | null;
 };
 
 const initialState: CategoryList = {
     categories: [],
+
     loading: false,
     error: null,
 };
@@ -52,5 +48,7 @@ export const categoriesSlice = createSlice({
         });
     },
 });
+
+export const {} = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;
