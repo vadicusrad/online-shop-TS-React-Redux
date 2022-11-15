@@ -9,7 +9,7 @@ const SearchPage: React.FC = () => {
     );
 
     return (
-        <>
+        <div className='min-h-screen max-h-fit'>
             {searchItems.length ? (
                 <div className='container mx-auto grid grid-cols-4 justify-items-center gap-4 max-w-7xl py-14'>
                     {searchItems.map((product) => {
@@ -17,7 +17,7 @@ const SearchPage: React.FC = () => {
                     })}
                 </div>
             ) : (
-                <div className='flex justify-center flex-col items-center'>
+                <div className='flex flex-col items-center mt-12 min-h-screen max-h-fit'>
                     <p className='text-xl text-center mt-8'>
                         Товары не найдены. Попробуйте еще раз с другим запросом.
                     </p>
@@ -29,7 +29,7 @@ const SearchPage: React.FC = () => {
                     </Link>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 

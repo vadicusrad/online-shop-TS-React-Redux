@@ -17,7 +17,7 @@ const CartListItem: React.FC<CartItem> = ({
     const dispatch = useAppDispatch();
 
     return (
-        <div className='p-4 w-full h-32  relative flex shadow-sm '>
+        <div className='p-4 w-full h-32 relative flex shadow-sm z-10'>
             <span
                 className='absolute right-5 top-3 cursor-pointer text-slate-500'
                 onClick={() => dispatch(deleteItemFromCart(id))}
@@ -51,13 +51,3 @@ const CartListItem: React.FC<CartItem> = ({
 };
 
 export default CartListItem;
-
-//
-//         <span
-//
-//         >
-//             One minus
-//         </span>
-//     </Cart>
-// );
-// }

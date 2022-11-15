@@ -21,7 +21,7 @@ function App() {
     }, [dispatch]);
 
     return (
-        <div>
+        <div className='flex flex-col justify-between'>
             <Header />
             <Routes>
                 <Route index element={<ProductList />} />

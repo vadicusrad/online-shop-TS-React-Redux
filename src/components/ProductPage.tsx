@@ -20,7 +20,9 @@ const ProductPage: React.FC = () => {
     return (
         <>
             {loadingStatus && (
-                <div className='flex justify-center'>{loadingIcon}</div>
+                <div className='flex justify-center h-screen'>
+                    {loadingIcon}
+                </div>
             )}
             {currentProduct && (
                 <div className='flex px-40 py-20 h-screen '>
