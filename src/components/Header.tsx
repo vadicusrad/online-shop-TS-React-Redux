@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import CategoriesList from './CategoriesList';
 import { Link, useNavigate } from 'react-router-dom';
 import {
     filterByCurrentCategory,
@@ -8,25 +7,15 @@ import {
     sortProducts,
 } from '../features/productsSlice';
 import SortingTools from './SortingTools';
-import { useScrollBlock } from '../hooks/useScrollBlock';
+import cartIcon from '../icons/cartIcon';
+import personIcon from '../icons/personIcon';
 
 const Header: React.FC = () => {
     const cartItems = useAppSelector((state) => state.cart.order);
     const [searchInput, setSearchInput] = useState('');
-    const [categoryModal, setCategoryModal] = useState<boolean>(false);
-    const [blockScroll, allowScroll] = useScrollBlock();
 
     let navigate = useNavigate();
     const dispatch = useAppDispatch();
-
-    const onCloseModal = () => {
-        setCategoryModal(false);
-        allowScroll();
-    };
-    const onOpenModal = () => {
-        setCategoryModal(true);
-        blockScroll();
-    };
 
     function handleSearchStringChange() {
         if (searchInput.length) {
@@ -89,37 +78,9 @@ const Header: React.FC = () => {
                     </svg>
                 </span>
                 <span className='flex'>
-                    <Link to='personal-area'>
-                        <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            fill='none'
-                            viewBox='0 0 24 24'
-                            strokeWidth='1.5'
-                            stroke='currentColor'
-                            className='w-8 h-8  cursor-pointer mx-6'
-                        >
-                            <path
-                                strokeLinecap='round'
-                                strokeLinejoin='round'
-                                d='M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z'
-                            />
-                        </svg>
-                    </Link>
+                    <Link to='personal-area'>{personIcon}</Link>
                     <Link className='relative' to='cart'>
-                        <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            fill='none'
-                            viewBox='0 0 24 24'
-                            strokeWidth='1.5'
-                            stroke='currentColor'
-                            className='w-8 h-8  cursor-pointer'
-                        >
-                            <path
-                                strokeLinecap='round'
-                                strokeLinejoin='round'
-                                d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z'
-                            />
-                        </svg>
+                        {cartIcon}
                         {cartItems.length ? (
                             <span className='absolute top-1 left-8 rounded-xl bg-lime-500 w-6 h-6 flex justify-center items-center text-white'>
                                 {cartItems.length}
@@ -128,34 +89,7 @@ const Header: React.FC = () => {
                     </Link>
                 </span>
             </div>
-            <div className='px-40 h-14 bg-yellow-600 text-white flex items-center space-x-6 font-light sticky top-0'>
-                <div
-                    onClick={() => {
-                        onOpenModal();
-                    }}
-                    className='bg-yellow-500 h-full px-4 flex items-center '
-                >
-                    <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        strokeWidth='1.5'
-                        stroke='currentColor'
-                        className='w-6 h-6'
-                    >
-                        <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
-                        />
-                    </svg>
-
-                    <CategoriesList
-                        categoryModal={categoryModal}
-                        onCloseModal={onCloseModal}
-                    />
-                </div>
-
+            <div className='px-40 h-14 bg-yellow-600 text-white flex items-center space-x-6 font-light sticky top-0 opacity-95'>
                 <a href='about'>О компании</a>
                 <a href='contacts'>Контакты</a>
                 <a href='delivery'>Доставка</a>

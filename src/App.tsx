@@ -4,7 +4,7 @@ import { getProducts } from './features/productsSlice';
 import { RootState } from './store';
 import ProductList from './components/ProductList';
 import { getAllCategories } from './features/categoriesSlice';
-import CategoriesList from './components/CategoriesList';
+
 import Cart from './components/Cart';
 import Header from './components/Header';
 import { Routes, Route } from 'react-router-dom';
@@ -14,7 +14,6 @@ import NotFoundPage from './components/NotFoundPage';
 import Footer from './components/Footer';
 
 function App() {
-    // const allProducts = useAppSelector((state) => state.products);
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(getAllCategories());
