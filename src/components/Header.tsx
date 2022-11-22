@@ -26,6 +26,7 @@ const Header: React.FC = () => {
             if (searchInput.length) {
                 dispatch(filterBySearchString(searchInput));
                 navigate('search');
+                setSearchInput('');
             }
         }
     }
@@ -54,6 +55,7 @@ const Header: React.FC = () => {
                         className='h-10 w-[600px] bg-stone-200 rounded pl-3 focus:outline-none'
                         type='text'
                         placeholder='Поиск'
+                        value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
                         onKeyDown={(e) => onKeyEnter(e.key)}
                     />

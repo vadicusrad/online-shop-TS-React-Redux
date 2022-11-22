@@ -4,7 +4,6 @@ import {
     isRejectedWithValue,
 } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { store } from '../store';
 
 export interface Product {
     id: number;
@@ -19,18 +18,28 @@ export interface Product {
 
 interface ProductState {
     allProducts: Product[];
-    filteredProducts: Product[];
+    visibleProducts: Product[];
     currentProduct: Product | null;
     currentSortCondition: string;
+    currentCategory: string;
+    priceRange: {
+        from: number;
+        to: number;
+    };
     loading: boolean;
     error: string | null;
 }
 
 const initialState: ProductState = {
     allProducts: [],
-    filteredProducts: [],
+    visibleProducts: [],
     currentProduct: null,
     currentSortCondition: 'default',
+    currentCategory: 'all',
+    priceRange: {
+        from: 0,
+        to: 10000,
+    },
     loading: false,
     error: null,
 };
@@ -66,26 +75,24 @@ export const productSlice = createSlice({
     name: 'products',
     initialState,
     reducers: {
-        filterByCurrentCategory: (state, action: PayloadAction<string>) => {
-            state.filteredProducts = state.allProducts.filter(
-                (item) => item.category === action.payload
-            );
+        filterByCurrentCategory: (state) => {
+            if (state.currentCategory !== 'all') {
+                state.visibleProducts = state.allProducts.filter(
+                    (item) => item.category === state.currentCategory
+                );
+            } else state.visibleProducts = state.allProducts;
         },
-
         filterBySearchString: (state, action: PayloadAction<string>) => {
-            state.filteredProducts = state.allProducts.filter((item) =>
+            state.visibleProducts = state.allProducts.filter((item) =>
                 item.title.toLowerCase().includes(action.payload.toLowerCase())
             );
         },
-
-        sortProducts: (state, action: PayloadAction<string>) => {
-            state.currentSortCondition = action.payload;
-
+        sortProductsByCurrentSortCondition: (state) => {
             // создаю переменную для сортировки в которую кладу все продукты
             let arrayToSort = state.allProducts;
             // если выбрана котегория продуктов то в переменную для сортировки кладу продукты из выбранной категории
-            if (state.filteredProducts.length) {
-                arrayToSort = state.filteredProducts;
+            if (state.visibleProducts.length) {
+                arrayToSort = state.visibleProducts;
             }
             // три типа сортировки в зависимости от типа экшена
             if (state.currentSortCondition === 'descending') {
@@ -109,6 +116,39 @@ export const productSlice = createSlice({
                 );
             }
         },
+        filterProductsByPriceRange: (state) => {
+            // создаю переменную для фильтрации в которую кладу все продукты
+            let arrayToFilter = JSON.parse(
+                JSON.stringify(state.visibleProducts)
+            );
+            if (!arrayToFilter.length) {
+                arrayToFilter = JSON.stringify(state.allProducts);
+            }
+
+            const from = state.priceRange.from;
+            const to = state.priceRange.to;
+
+            // фильтирую массив на соответствие максимальной и минимальной цене
+            const filteredArray = arrayToFilter
+                .filter((item: { price: number }) => item.price >= from)
+                .filter((item: { price: number }) => item.price <= to);
+
+            // возвращаю в стейт отфильтрованный массив
+            state.visibleProducts = filteredArray;
+        },
+        setCurrentCategory: (state, action: PayloadAction<string>) => {
+            state.currentCategory = action.payload;
+        },
+        setPriceRange: (
+            state,
+            action: PayloadAction<{ from: number; to: number }>
+        ) => {
+            // приделать проверку на положительное число
+            state.priceRange = action.payload;
+        },
+        setCurrentSortCondition: (state, action: PayloadAction<string>) => {
+            state.currentSortCondition = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(getProducts.pending, (state) => {
@@ -118,8 +158,20 @@ export const productSlice = createSlice({
         builder.addCase(getProducts.fulfilled, (state, action) => {
             state.loading = false;
             state.allProducts = action.payload;
-        });
+            state.visibleProducts = action.payload;
+            // получаю минимальную и максимальную цену среди полученных продуктов
+            let allProductsArrayClone = JSON.parse(
+                JSON.stringify(state.allProducts)
+            ); // получаю независимый клон стейта
+            const sortingDescendingArr = allProductsArrayClone.sort(
+                (prev: { price: number }, next: { price: number }) =>
+                    prev.price - next.price
+            ); // сортирую клон по возрастанию цены
 
+            // присваиваю в стейт значения наибольшей и наименьшей цены среди всех продуктов
+            state.priceRange.from = sortingDescendingArr[0].price; //  первый элемент с наименьшей ценой
+            state.priceRange.to = sortingDescendingArr.slice(-1)[0].price; //  последний элемент с наибольшей ценой
+        });
         builder.addCase(getSingleProduct.pending, (state) => {
             state.currentProduct = null;
             state.loading = true;
@@ -132,7 +184,14 @@ export const productSlice = createSlice({
     },
 });
 
-export const { filterByCurrentCategory, filterBySearchString, sortProducts } =
-    productSlice.actions;
+export const {
+    filterByCurrentCategory,
+    filterBySearchString,
+    sortProductsByCurrentSortCondition,
+    filterProductsByPriceRange,
+    setPriceRange,
+    setCurrentCategory,
+    setCurrentSortCondition,
+} = productSlice.actions;
 
 export default productSlice.reducer;

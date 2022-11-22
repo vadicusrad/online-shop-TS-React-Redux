@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
     filterByCurrentCategory,
-    sortProducts,
+    filterProductsByPriceRange,
+    setCurrentCategory,
+    setCurrentSortCondition,
+    setPriceRange,
+    sortProductsByCurrentSortCondition,
 } from '../features/productsSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
 
@@ -17,24 +21,37 @@ const SortingTools = () => {
         (state) => state.categories.categories
     );
 
-    function handleChangeSelect(select: string) {
-        dispatch(sortProducts(select));
+    const priceRange = useAppSelector((state) => state.products.priceRange);
+
+    function handleUseAllfilters() {
+        dispatch(filterByCurrentCategory());
+        dispatch(filterProductsByPriceRange());
+        dispatch(sortProductsByCurrentSortCondition());
     }
 
-    function handleChangeCategory(select: string) {
-        dispatch(filterByCurrentCategory(select));
-        handleChangeSelect(currentSelectValue);
+    function handleSetPriceRange(newPriceRange: { from: number; to: number }) {
+        dispatch(setPriceRange(newPriceRange));
+    }
+
+    function handleSetSortSelect(select: string) {
+        dispatch(setCurrentSortCondition(select));
+        handleUseAllfilters();
+    }
+
+    function handleSetCurrentCategory(select: string) {
+        dispatch(setCurrentCategory(select));
+        handleUseAllfilters();
     }
 
     return (
-        <div className='mt-2 h-8 flex align-center px-40 space-x-6'>
+        <div className='mt-2  flex align-center px-40 space-x-6'>
             <div>
                 <span>Категории:</span>
                 <select
                     className='h-6 border ml-2'
                     name='categorySelect'
                     id='categorySelect'
-                    onChange={(e) => handleChangeCategory(e.target.value)}
+                    onChange={(e) => handleSetCurrentCategory(e.target.value)}
                 >
                     <option value='all'>all</option>
 
@@ -54,13 +71,49 @@ const SortingTools = () => {
                     className='h-6 border ml-2'
                     name='sortSelect'
                     id='sortSelect'
-                    onChange={(e) => handleChangeSelect(e.target.value)}
+                    onChange={(e) => handleSetSortSelect(e.target.value)}
                 >
                     <option value='default'>По умолчанию</option>
                     <option value='descending'>Сначала дорогие</option>
                     <option value='ascending'>Сначала дешевые</option>
                     <option value='byrating'>По рейтингу</option>
                 </select>
+            </div>
+            <div className=''>
+                Цена:
+                <span>
+                    <input
+                        className='h-6 border ml-2 w-20'
+                        type='number'
+                        onChange={(e) =>
+                            handleSetPriceRange({
+                                ...priceRange,
+                                from: +e.target.value,
+                            })
+                        }
+                        placeholder={`от ${priceRange.from}`}
+                    />
+                </span>
+                <span>
+                    До:{' '}
+                    <input
+                        className='h-6 border ml-2 w-24'
+                        type='number'
+                        onChange={(e) =>
+                            handleSetPriceRange({
+                                ...priceRange,
+                                to: +e.target.value,
+                            })
+                        }
+                        placeholder={`до ${priceRange.to}`}
+                    />
+                </span>
+                <button
+                    className='h-6 border ml-2 w-6'
+                    onClick={() => handleUseAllfilters()}
+                >
+                    ok
+                </button>
             </div>
         </div>
     );

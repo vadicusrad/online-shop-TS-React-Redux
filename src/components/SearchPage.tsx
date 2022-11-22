@@ -5,7 +5,7 @@ import ProductCard from './ProductCard';
 
 const SearchPage: React.FC = () => {
     const searchItems = useAppSelector(
-        (state) => state.products.filteredProducts
+        (state) => state.products.visibleProducts
     );
 
     return (

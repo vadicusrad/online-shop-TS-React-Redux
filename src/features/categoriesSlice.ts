@@ -12,7 +12,6 @@ type CategoryList = {
 
 const initialState: CategoryList = {
     categories: [],
-
     loading: false,
     error: null,
 };

@@ -11,10 +11,10 @@ const ProductCard: React.FC<Product> = (product) => {
     }
 
     return (
-        <div className='group w-full h-96 flex flex-col justify-between  p-2 cursor-pointer'>
+        <div className='group w-full h-96 flex flex-col justify-between  p-2 cursor-pointer hover:shadow-sm'>
             <Link
                 to={`product${product.id}`}
-                className='flex flex-col items-center justify-between h-5/6'
+                className='flex flex-col items-center justify-between h-5/6 '
             >
                 <img
                     className='h-3/6 w-40  object-fill'
