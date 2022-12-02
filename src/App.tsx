@@ -12,6 +12,7 @@ import ProductPage from './components/ProductPage';
 import SearchPage from './components/SearchPage';
 import NotFoundPage from './components/NotFoundPage';
 import Footer from './components/Footer';
+import BtnScrollTop from './components/BtnScrollTop';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -31,6 +32,7 @@ function App() {
                 <Route path='*' element={<NotFoundPage />} />
             </Routes>
             <Footer />
+            <BtnScrollTop />
         </div>
     );
 }
