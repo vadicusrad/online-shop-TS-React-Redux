@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import upArrow from '../icons/upArrow';
 
-const BtnScrollTop = () => {
+const BtnScrollTop: React.FC = () => {
     //динамически добавляемые стили для кнопки вверх
     const [upBtnVisible, setUpBtnVisible] = useState('opacity-0 -right-10');
 

@@ -44,7 +44,7 @@ const SortingTools = () => {
     }
 
     return (
-        <div className='mt-2  flex align-center px-40 space-x-6'>
+        <div className='mt-2  flex flex-col md:flex-row align-center px-5 md:px-40 space-x-6'>
             <div>
                 <span>Категории:</span>
                 <select

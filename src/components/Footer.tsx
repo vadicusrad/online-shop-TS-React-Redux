@@ -7,12 +7,12 @@ import vkIcon from '../icons/vkIcon';
 
 const Footer = () => {
     return (
-        <div className='w-full bg-blue-900 h-96 text-white px-40 py-10'>
+        <div className='w-full bg-blue-900 h-96 text-white px-5 md:px-40 py-10'>
             <a href='/' className='text-5xl  cursor-pointer m-2'>
                 LOGO
             </a>
             <div className='flex justify-between'>
-                <div className='flex mt-6 space-x-12'>
+                <div className='flex mt-6 md:space-x-12'>
                     <span className='flex flex-col space-y-4'>
                         <Link to='delivery'>Доставка</Link>
                         <Link to='payment'>Оплата</Link>
