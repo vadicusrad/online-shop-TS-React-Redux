@@ -25,16 +25,16 @@ const ProductPage: React.FC = () => {
                 </div>
             )}
             {currentProduct && (
-                <div className='flex px-40 py-20 h-screen max-h-fit'>
-                    <div className='w-1/2 flex justify-center'>
+                <div className='flex flex-col md:flex-row px-5 lg:px-40 py-10 md:py-20  max-h-fit'>
+                    <div className='h-[250px] w-full md:w-1/2 flex justify-center'>
                         <img
-                            className='h-1/2 '
+                            className='object-scale-down'
                             src={currentProduct.image}
                             alt={currentProduct.title}
                         />
                     </div>
 
-                    <div className='w-1/2 flex flex-col items-start'>
+                    <div className='w-full md:w-1/2 flex flex-col md:items-start'>
                         <span className='mb-2'>
                             {currentProduct.rating.rate}
                         </span>
@@ -49,7 +49,7 @@ const ProductPage: React.FC = () => {
                             onClick={() =>
                                 dispatch(addItemToCart(currentProduct))
                             }
-                            className='h-10 w-44 rounded-sm text-white bg-yellow-600 hover:bg-yellow-500 mb-4'
+                            className='h-10 w-full  sm:w-44 rounded-sm text-white bg-yellow-600 hover:bg-yellow-500 mb-4'
                         >
                             В корзину
                         </button>

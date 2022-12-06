@@ -44,11 +44,11 @@ const SortingTools = () => {
     }
 
     return (
-        <div className='mt-2  flex flex-col md:flex-row align-center px-5 md:px-40 space-x-6'>
+        <div className='mt-2  flex flex-col md:items-end md:flex-row md:flex-wrap align-center px-5 md:px-20 lg:px-40 space-y-3'>
             <div>
-                <span>Категории:</span>
+                <span className='mr-2'>Категории:</span>
                 <select
-                    className='h-6 border ml-2'
+                    className='h-6 border'
                     name='categorySelect'
                     id='categorySelect'
                     onChange={(e) => handleSetCurrentCategory(e.target.value)}
@@ -64,11 +64,11 @@ const SortingTools = () => {
                     })}
                 </select>
             </div>
-            <div className=''>
-                <span>Сортировка:</span>
+            <div className='md:mx-6'>
+                <span className='mr-2'>Сортировка:</span>
                 <select
                     value={currentSelectValue}
-                    className='h-6 border ml-2'
+                    className='h-6 border'
                     name='sortSelect'
                     id='sortSelect'
                     onChange={(e) => handleSetSortSelect(e.target.value)}
@@ -79,7 +79,7 @@ const SortingTools = () => {
                     <option value='byrating'>По рейтингу</option>
                 </select>
             </div>
-            <div className=''>
+            <div className='w-[300px]'>
                 Цена:
                 <span>
                     <input

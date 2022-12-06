@@ -6,7 +6,7 @@ import ProductList from './components/ProductList';
 import { getAllCategories } from './features/categoriesSlice';
 
 import Cart from './components/Cart';
-import Header from './components/Header';
+import Header from './components/header/Header';
 import { Routes, Route } from 'react-router-dom';
 import ProductPage from './components/ProductPage';
 import SearchPage from './components/SearchPage';

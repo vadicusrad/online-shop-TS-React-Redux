@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Link, useNavigate } from 'react-router-dom';
-import { filterBySearchString } from '../features/productsSlice';
-import SortingTools from './SortingTools';
-import cartIcon from '../icons/cartIcon';
-import personIcon from '../icons/personIcon';
-import lupeIcon from '../icons/lupeIcon';
-import burger from '../icons/burger';
+import { filterBySearchString } from '../../features/productsSlice';
+import SortingTools from '../SortingTools';
+import cartIcon from '../../icons/cartIcon';
+import personIcon from '../../icons/personIcon';
+import lupeIcon from '../../icons/lupeIcon';
+import burger from '../../icons/burger';
 
 const Header: React.FC = () => {
     const cartItems = useAppSelector((state) => state.cart.order);
     const [searchInput, setSearchInput] = useState('');
+    // стейт бокового меню на меленьких экранах
     const [openMobNav, setOpenMobNav] = useState(false);
     console.log(openMobNav);
+
     let navigate = useNavigate();
     const dispatch = useAppDispatch();
 
@@ -38,7 +40,8 @@ const Header: React.FC = () => {
 
     return (
         <>
-            <div className='sticky top-0 h-20 bg-yellow-600 md:hidden text-white flex justify-between items-center px-5 z-30'>
+            {/*Хэдер на маленькиъ экранах */}
+            <div className='sticky top-0 h-14 w-full bg-yellow-600 md:hidden text-white flex justify-between items-center px-5 z-30'>
                 <a
                     href='/'
                     className='text-xl md:text-5xl text-yellow-800 cursor-pointer m-2'
@@ -52,15 +55,18 @@ const Header: React.FC = () => {
                     {burger}
                 </span>
             </div>
+            {/* Подложка бокового меню */}
             <div
                 onClick={() => handleOpenMobNav()}
                 className={`absolute h-full w-full top-0 left-0 bg-black opacity-30 z-20 transition-all duration-500 ${
                     openMobNav ? 'block' : 'hidden'
                 } md:hidden`}
             ></div>
+
+            {/* Боковое выезжающее меню на маленьких экранах */}
             <div
-                className={`absolute h-screen w-2/4 bg-yellow-400 top-20 transition-all duration-500 ${
-                    openMobNav ? 'right-0' : '-right-full'
+                className={`fixed h-screen w-2/4 bg-yellow-400 top-14 transition-all duration-500 ${
+                    openMobNav ? 'right-0 block' : '-right-3/4'
                 }
                 md:hidden flex flex-col space-y-2 px-10 py-5 z-30
                 `}
@@ -106,9 +112,9 @@ const Header: React.FC = () => {
                     О компании
                 </Link>
             </div>
-
-            <div className='hidden sm:flex flex-col sm:w-full text-xs'>
-                <div className='hidden md:flex h-10 bg-stone-200 justify-between items-center px-5 md:px-40 font-light '>
+            {/* Меню на больших экранах */}
+            <div className='hidden sm:flex flex-col sm:w-full xl:w-[1920px] m-auto text-xs'>
+                <div className='hidden md:flex h-10 bg-stone-200 justify-between items-center px-5  md:px-20 lg:px-40 font-light '>
                     <a href='tel:+7 800 800 80 80'>+7 800 800 80 80</a>
                     <span className='flex space-x-4'>
                         <Link to='delivery'>Доставка</Link>
@@ -118,16 +124,17 @@ const Header: React.FC = () => {
                         <Link to='return-goods'>Возврат товаров</Link>
                     </span>
                 </div>
-                <div className='hidden   h-28 bg-stone-100 md:flex justify-between items-center px-5 md:px-40 '>
+                <div className='hidden h-28 bg-stone-100 md:flex justify-between items-center px-5  md:px-20 lg:px-40'>
                     <a
                         href='/'
                         className='text-xl md:text-5xl text-yellow-800 cursor-pointer m-2'
                     >
                         LOGO
                     </a>
+                    {/* инпут для поиска */}
                     <span className='relative'>
                         <input
-                            className='h-10 sm:w-[200px] bg-stone-200 rounded sm:pl-3 focus:outline-none'
+                            className='h-10 w-[200px] md:w-[300px] lg:w-[500px]  bg-stone-200 rounded sm:pl-3 focus:outline-none'
                             type='text'
                             placeholder='Поиск'
                             value={searchInput}
@@ -157,8 +164,8 @@ const Header: React.FC = () => {
                     <Link to='payment'>Оплата</Link>
                     <Link to='personal-area'>Личный кабинет</Link>
                 </div>
-                <SortingTools />
             </div>
+            <SortingTools />
         </>
     );
 };
