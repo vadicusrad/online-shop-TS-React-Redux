@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Link, useNavigate } from 'react-router-dom';
 import { filterBySearchString } from '../../features/productsSlice';
-import SortingTools from '../SortingTools';
 import cartIcon from '../../icons/cartIcon';
 import personIcon from '../../icons/personIcon';
 import lupeIcon from '../../icons/lupeIcon';
 import burger from '../../icons/burger';
+import { useScrollBlock } from '../../hooks/useScrollBlock';
 
 const Header: React.FC = () => {
     const cartItems = useAppSelector((state) => state.cart.order);
     const [searchInput, setSearchInput] = useState('');
     // стейт бокового меню на меленьких экранах
     const [openMobNav, setOpenMobNav] = useState(false);
+    // хук для блокировки скролла при открытом меню на мобилке
+    const [blockScroll, allowScroll] = useScrollBlock();
 
     let navigate = useNavigate();
     const dispatch = useAppDispatch();
@@ -35,12 +37,15 @@ const Header: React.FC = () => {
     }
     function handleOpenMobNav() {
         setOpenMobNav(!openMobNav);
+        openMobNav ? allowScroll() : blockScroll();
     }
 
     return (
         <>
             {/*Хэдер на маленькиъ экранах */}
-            <div className='sticky top-0 h-14 w-full bg-yellow-600 md:hidden text-white flex justify-between items-center px-5 z-30'>
+            <div
+                className={`fixed top-0 h-14 w-full bg-yellow-600 md:hidden text-white flex justify-between items-center px-5 z-30`}
+            >
                 <a
                     href='/'
                     className='text-xl md:text-5xl text-yellow-800 cursor-pointer m-2'
@@ -64,10 +69,10 @@ const Header: React.FC = () => {
 
             {/* Боковое выезжающее меню на маленьких экранах */}
             <div
-                className={`fixed h-screen w-2/4 bg-yellow-400 top-14 transition-all duration-500 ${
+                className={`fixed h-full max-h-screen w-3/4 sm:w-2/4 bg-yellow-400 top-14 transition-all duration-500 overflow-y-auto ${
                     openMobNav ? 'right-0 block' : '-right-3/4'
                 }
-                md:hidden flex flex-col space-y-2 px-10 py-5 z-30
+                md:hidden flex flex-col space-y-2 px-10 py-5 pb-10 z-30
                 `}
             >
                 <Link

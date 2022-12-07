@@ -16,14 +16,14 @@ const Cart: React.FC = () => {
 
     const cartItemsList = () => {
         return (
-            <div className='flex flex-col md:flex-row items-end md:items-start md:space-x-4 min-h-screen max-h-fit'>
+            <div className='flex flex-col md:flex-row items-center md:items-start min-h-screen max-h-fit'>
                 <div className='md:w-2/3'>
                     {cartItems &&
                         cartItems.map((item) => {
                             return <CartListItem {...item} key={item.id} />;
                         })}
                 </div>
-                <div className='w-full sm:w-[400px] md:w-1/3 bg-slate-200 p-6 flex items-center flex-col sticky top-28 mt-5'>
+                <div className='w-full sm:w-[400px] md:w-1/3 bg-slate-200 p-6 flex items-center flex-col sticky top-28 mt-5 md:m-0'>
                     <span className='text-2xl mb-4 '>
                         Итого к оплате: ${cartItemsSumm()}
                     </span>
@@ -36,8 +36,10 @@ const Cart: React.FC = () => {
     };
 
     return (
-        <div className='container mx-auto max-w-7xl py-10 min-h-screen px-5'>
-            <h1 className='text-3xl md:text-4xl mb-4'>Корзина</h1>
+        <div className='container mx-auto max-w-7xl pt-5 pb-10 min-h-screen px-5 mt-14 md:mt-0'>
+            <h1 className='text-3xl md:text-4xl text-center md:text-left md:ml-6 mb-5 '>
+                Корзина
+            </h1>
             {cartItems.length ? (
                 cartItemsList()
             ) : (
