@@ -19,14 +19,20 @@ const CartListItem: React.FC<CartItem> = ({
     return (
         <div className='p-4 w-full h-32 relative flex shadow-sm z-10'>
             <span
-                className='absolute right-5 top-3 cursor-pointer text-slate-500'
+                className='absolute right-3 top-0 cursor-pointer text-slate-500'
                 onClick={() => dispatch(deleteItemFromCart(id))}
             >
                 x
             </span>
-            <img className='w-20 mr-8' src={image} alt={title} />
-            <div className='flex flex-col justify-between'>
-                <h2 className='font-bold text-xl '>{title}</h2>
+            <img
+                className='min-w-[80px] w-[80px] mr-5 md:mr-8 object-contain flex justify-center'
+                src={image}
+                alt={title}
+            />
+            <div className='flex flex-col justify-between '>
+                <h2 className='font-bold lg:text-xl overflow-hidden '>
+                    {title}
+                </h2>
                 <p className='text-yellow-600 '>${price}</p>
                 <div className='bg-yellow-600 h-7 w-24 text-white flex justify-between rounded-sm'>
                     <button

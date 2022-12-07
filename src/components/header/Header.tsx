@@ -73,12 +73,12 @@ const Header: React.FC = () => {
             >
                 <Link
                     onClick={() => handleOpenMobNav()}
-                    className='relative'
+                    className='relative flex justify-end'
                     to='cart'
                 >
                     {cartIcon}
                     {cartItems.length ? (
-                        <span className='absolute top-1 left-8 rounded-xl bg-lime-500 w-6 h-6 flex justify-center items-center text-white'>
+                        <span className='absolute top-1 right-8 rounded-xl bg-lime-500 w-6 h-6 flex justify-center items-center text-white'>
                             {cartItems.length}
                         </span>
                     ) : null}
