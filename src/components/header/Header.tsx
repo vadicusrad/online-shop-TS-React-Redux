@@ -13,7 +13,6 @@ const Header: React.FC = () => {
     const [searchInput, setSearchInput] = useState('');
     // стейт бокового меню на меленьких экранах
     const [openMobNav, setOpenMobNav] = useState(false);
-    console.log(openMobNav);
 
     let navigate = useNavigate();
     const dispatch = useAppDispatch();
