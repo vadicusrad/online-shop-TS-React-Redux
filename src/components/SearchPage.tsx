@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../hooks';
 import ProductCard from './ProductCard';
+import SortingTools from './SortingTools';
 
 const SearchPage: React.FC = () => {
     const searchItems = useAppSelector(
@@ -21,12 +22,12 @@ const SearchPage: React.FC = () => {
                     <p className='text-xl text-center mt-8'>
                         Товары не найдены. Попробуйте еще раз с другим запросом.
                     </p>
-                    <Link
+                    <a
                         className='h-10 w-60 text-white bg-yellow-600 hover:bg-yellow-500 mt-6 flex justify-center items-center rounded-sm'
-                        to='/'
+                        href='/'
                     >
                         Вернуться на главную
-                    </Link>
+                    </a>
                 </div>
             )}
         </div>

@@ -165,7 +165,6 @@ const Header: React.FC = () => {
                     <Link to='personal-area'>Личный кабинет</Link>
                 </div>
             </div>
-            <SortingTools />
         </>
     );
 };
