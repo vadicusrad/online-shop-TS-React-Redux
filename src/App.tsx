@@ -13,6 +13,7 @@ import SearchPage from './components/SearchPage';
 import NotFoundPage from './components/NotFoundPage';
 import Footer from './components/Footer';
 import BtnScrollTop from './components/BtnScrollTop';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -23,6 +24,7 @@ function App() {
 
     return (
         <div className='flex flex-col justify-between relative'>
+            <ScrollToTop />
             <Header />
             <Routes>
                 <Route index element={<ProductList />} />
