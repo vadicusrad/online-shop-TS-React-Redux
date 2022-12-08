@@ -119,11 +119,11 @@ const Header: React.FC = () => {
                     Контакты
                 </Link>
                 <Link onClick={() => handleOpenMobNav()} to='about'>
-                    О компании
+                    О нас
                 </Link>
             </div>
             {/* Меню на больших экранах */}
-            <div className='hidden sm:flex flex-col sm:w-full xl:w-[1920px] m-auto text-xs'>
+            <div className='hidden sm:flex flex-col sm:w-full xl:w-[1900px] m-auto text-xs'>
                 <div className='hidden md:flex h-10 bg-stone-200 justify-between items-center px-5  md:px-20 lg:px-40 font-light '>
                     <a href='tel:+7 800 800 80 80'>+7 800 800 80 80</a>
                     <span className='flex space-x-4'>

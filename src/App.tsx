@@ -15,6 +15,7 @@ import BtnScrollTop from './components/BtnScrollTop';
 import AutoScrollToTop from './components/AutoScrollToTop';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import About from './components/About';
 function App() {
     const dispatch = useAppDispatch();
     useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
                 <Route path='cart' element={<Cart />} />
                 <Route path='product:id' element={<ProductPage />} />
                 <Route path='search' element={<SearchPage />} />
+                <Route path='about' element={<About />} />
                 <Route path='*' element={<NotFoundPage />} />
             </Routes>
             <Footer />

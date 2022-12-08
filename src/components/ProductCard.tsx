@@ -22,7 +22,7 @@ const ProductCard: React.FC<Product> = (product) => {
     }
 
     return (
-        <div className='group w-full sm:w-[200px] md:w-[180px] h-96 flex flex-col justify-between  p-2 cursor-pointer hover:shadow-sm'>
+        <div className='group w-full sm:w-[200px] md:w-[180px] h-80 flex flex-col justify-between  p-2 cursor-pointer hover:shadow-sm'>
             <Link
                 to={`product${product.id}`}
                 className='flex flex-col items-center justify-between h-5/6 '

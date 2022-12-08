@@ -44,7 +44,7 @@ const SortingTools = () => {
     }
 
     return (
-        <div className='mt-2  flex flex-col md:items-end md:flex-row md:flex-wrap align-center px-5 md:px-20 lg:px-40 space-y-3'>
+        <div className='mt-2  flex flex-col md:items-end md:flex-row md:flex-wrap align-center md:px-20 lg:px-40 space-y-3'>
             <div>
                 <span className='mr-2'>Категории:</span>
                 <select
@@ -79,9 +79,9 @@ const SortingTools = () => {
                     <option value='byrating'>По рейтингу</option>
                 </select>
             </div>
-            <div className='w-[300px]'>
-                Цена:
+            <div className=''>
                 <span>
+                    Цена:
                     <input
                         className='h-6 border ml-2 w-20'
                         type='number'
@@ -94,7 +94,7 @@ const SortingTools = () => {
                         placeholder={`от ${priceRange.from}`}
                     />
                 </span>
-                <span>
+                <span className='ml-2'>
                     До:{' '}
                     <input
                         className='h-6 border ml-2 w-24'
@@ -109,10 +109,10 @@ const SortingTools = () => {
                     />
                 </span>
                 <button
-                    className='h-6 border ml-2 w-6'
+                    className='h-6 border ml-2 px-2'
                     onClick={() => handleUseAllfilters()}
                 >
-                    ok
+                    OK
                 </button>
             </div>
         </div>
