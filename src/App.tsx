@@ -4,7 +4,6 @@ import { getProducts } from './features/productsSlice';
 import { RootState } from './store';
 import ProductList from './components/ProductList';
 import { getAllCategories } from './features/categoriesSlice';
-
 import Cart from './components/Cart';
 import Header from './components/header/Header';
 import { Routes, Route } from 'react-router-dom';
@@ -13,8 +12,9 @@ import SearchPage from './components/SearchPage';
 import NotFoundPage from './components/NotFoundPage';
 import Footer from './components/Footer';
 import BtnScrollTop from './components/BtnScrollTop';
-import ScrollToTop from './components/ScrollToTop';
-
+import AutoScrollToTop from './components/AutoScrollToTop';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
     const dispatch = useAppDispatch();
     useEffect(() => {
@@ -24,7 +24,8 @@ function App() {
 
     return (
         <div className='flex flex-col justify-between relative'>
-            <ScrollToTop />
+            <AutoScrollToTop />
+            <ToastContainer />
             <Header />
             <Routes>
                 <Route index element={<ProductList />} />

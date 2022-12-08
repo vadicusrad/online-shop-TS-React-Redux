@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { addItemToCart } from '../features/cartSlice';
 import { getSingleProduct } from '../features/productsSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import loadingIcon from '../icons/loadingIcon';
-
+import { Product } from '../features/productsSlice';
 const ProductPage: React.FC = () => {
     let params = useParams();
     let navigate = useNavigate();
@@ -18,6 +19,21 @@ const ProductPage: React.FC = () => {
     useEffect(() => {
         dispatch(getSingleProduct(currentProductId));
     }, [dispatch]);
+
+    function handleAdditemInCart(product: Product) {
+        dispatch(addItemToCart(product));
+        toast.success('Товар добавлен в корзину', {
+            position: 'bottom-right',
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'colored',
+        });
+    }
+
     return (
         <>
             {loadingStatus && (
@@ -49,7 +65,7 @@ const ProductPage: React.FC = () => {
 
                             <button
                                 onClick={() =>
-                                    dispatch(addItemToCart(currentProduct))
+                                    handleAdditemInCart(currentProduct)
                                 }
                                 className='h-10 w-full  sm:w-44 rounded-sm text-white bg-yellow-600 hover:bg-yellow-500 mb-4'
                             >

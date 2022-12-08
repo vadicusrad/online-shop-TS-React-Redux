@@ -1,11 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import CartListItem from './CartListItem';
 
 const Cart: React.FC = () => {
-    const dispatch = useAppDispatch();
     const cartItems = useAppSelector((state) => state.cart.order);
-
+    let navigate = useNavigate();
     const cartItemsSumm = () => {
         let sum = 0;
         cartItems.forEach((item) => {
@@ -23,7 +23,7 @@ const Cart: React.FC = () => {
                             return <CartListItem {...item} key={item.id} />;
                         })}
                 </div>
-                <div className='w-full sm:w-[400px] md:w-1/3 bg-slate-200 p-6 flex items-center flex-col sticky top-28 mt-5 md:m-0'>
+                <div className='w-full sm:w-[400px] md:w-1/3 bg-slate-200 p-6 flex items-center flex-col sticky top-28 mt-5 mb-10 md:m-0'>
                     <span className='text-2xl mb-4 '>
                         Итого к оплате: ${cartItemsSumm()}
                     </span>
@@ -43,8 +43,14 @@ const Cart: React.FC = () => {
             {cartItems.length ? (
                 cartItemsList()
             ) : (
-                <p className='mt-14 text-2xl'>Ваша корзина пуста</p>
+                <p className='my-14 text-2xl '>Ваша корзина пуста</p>
             )}
+            <button
+                onClick={() => navigate(-1)}
+                className='h-10 w-44 rounded-sm text-white bg-yellow-600 hover:bg-yellow-500 mb-4'
+            >
+                Вернуться назад
+            </button>
         </div>
     );
 };

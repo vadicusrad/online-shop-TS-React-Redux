@@ -3,11 +3,22 @@ import { addItemToCart } from '../features/cartSlice';
 import { Product } from '../features/productsSlice';
 import { useAppDispatch } from '../hooks';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const ProductCard: React.FC<Product> = (product) => {
     const dispatch = useAppDispatch();
     function handleAdditemInCart() {
         dispatch(addItemToCart(product));
+        toast.success('Товар добавлен в корзину', {
+            position: 'bottom-right',
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'colored',
+        });
     }
 
     return (
