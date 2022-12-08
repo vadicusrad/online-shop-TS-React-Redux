@@ -36,14 +36,14 @@ const Cart: React.FC = () => {
     };
 
     return (
-        <div className='container mx-auto max-w-7xl pt-5 pb-10 min-h-screen px-5 mt-14 md:mt-0'>
-            <h1 className='text-3xl md:text-4xl text-center md:text-left md:ml-6 mb-5 '>
+        <div className='container mx-auto max-w-7xl pt-5 pb-10 min-h-screen px-10 mt-14 md:mt-0'>
+            <h1 className='text-3xl md:text-4xl md:text-left md:ml-6 mb-5 '>
                 Корзина
             </h1>
             {cartItems.length ? (
                 cartItemsList()
             ) : (
-                <p className='my-14 text-2xl '>Ваша корзина пуста</p>
+                <p className='my-14 text-2xl px-10'>Ваша корзина пуста</p>
             )}
             <button
                 onClick={() => navigate(-1)}

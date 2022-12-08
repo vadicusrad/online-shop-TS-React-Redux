@@ -69,24 +69,30 @@ const Header: React.FC = () => {
 
             {/* Боковое выезжающее меню на маленьких экранах */}
             <div
-                className={`fixed h-full max-h-screen w-3/4 sm:w-2/4 bg-yellow-400 top-14 transition-all duration-500 overflow-y-auto ${
+                className={`fixed h-screen w-3/4 sm:w-2/4 bg-yellow-400 top-14 transition-all duration-500 overflow-auto pb-20 ${
                     openMobNav ? 'right-0 block' : '-right-3/4'
                 }
                 md:hidden flex flex-col space-y-2 px-10 py-5 pb-10 z-30
                 `}
             >
-                <Link
-                    onClick={() => handleOpenMobNav()}
-                    className='relative flex justify-end'
-                    to='cart'
-                >
-                    {cartIcon}
-                    {cartItems.length ? (
-                        <span className='absolute top-1 right-8 rounded-xl bg-lime-500 w-6 h-6 flex justify-center items-center text-white'>
-                            {cartItems.length}
-                        </span>
-                    ) : null}
-                </Link>
+                <span className='flex justify-end'>
+                    <Link onClick={() => handleOpenMobNav()} to='personal-area'>
+                        {personIcon}
+                    </Link>
+                    <Link
+                        onClick={() => handleOpenMobNav()}
+                        className='relative flex justify-end'
+                        to='cart'
+                    >
+                        {cartIcon}
+                        {cartItems.length ? (
+                            <span className='absolute top-1 right-8 rounded-xl bg-lime-500 w-6 h-6 flex justify-center items-center text-white'>
+                                {cartItems.length}
+                            </span>
+                        ) : null}
+                    </Link>
+                </span>
+
                 <Link onClick={() => handleOpenMobNav()} to='/'>
                     Главная страница
                 </Link>

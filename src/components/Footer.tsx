@@ -7,7 +7,7 @@ import vkIcon from '../icons/vkIcon';
 
 const Footer = () => {
     return (
-        <div className='w-full bg-blue-900 text-white px-10 md:px-20 xl:px-40 py-5 md:py-10 pb-12'>
+        <footer className='w-full bg-blue-900 text-white px-10 md:px-20 xl:px-40 py-5 md:py-10 pb-12'>
             <a
                 href='/'
                 className='text-5xl  cursor-pointer m-2 hidden md:block '
@@ -31,8 +31,10 @@ const Footer = () => {
                         <Link to='personal-area'>Личный кабинет</Link>
                     </span>
                 </div>
-                <div className='bg-gray w-1/2 md:w-1/3 md:ml-5 flex flex-col space-y-3 text-xl'>
-                    <h3 className='text-3xl font-semibold'>Контакты</h3>
+                <div className='bg-gray w-1/2 md:w-1/3 ml-12 md:ml-5 flex flex-col space-y-3 text-xl '>
+                    <h3 className='text-xl md:text-3xl font-semibold'>
+                        Контакты
+                    </h3>
                     <div className='flex space-x-4'>
                         <a
                             target='blank'
@@ -56,11 +58,19 @@ const Footer = () => {
                             {vkIcon}
                         </a>
                     </div>
-                    <a href='tel:+7 800 800 80 80'>+7 800 800 80 80</a>
-                    <span className=''> Санкт-Петербург Невский 12</span>
+                    <a
+                        className='text-sm md:text-xl'
+                        href='tel:+7 800 800 80 80'
+                    >
+                        +7 800 800 80 80
+                    </a>
+                    <span className='text-sm md:text-xl'>
+                        {' '}
+                        Санкт-Петербург Невский 12
+                    </span>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 };
 
