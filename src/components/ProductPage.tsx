@@ -42,8 +42,8 @@ const ProductPage: React.FC = () => {
                 </div>
             )}
             {currentProduct && (
-                <div className='flex flex-col items-center'>
-                    <div className='flex flex-col md:flex-row px-5 lg:px-40 py-10 md:py-20  max-h-fit'>
+                <div className='flex flex-col items-center mt-10 px-5'>
+                    <div className='flex flex-col md:flex-row lg:px-40 py-10 md:py-20  max-h-fit'>
                         <div className='h-[250px] w-full md:w-1/2 flex justify-center'>
                             <img
                                 className='object-scale-down'
@@ -77,7 +77,7 @@ const ProductPage: React.FC = () => {
                     </div>
                     <button
                         onClick={() => navigate(-1)}
-                        className='h-10 w-full  sm:w-44 rounded-sm text-white bg-yellow-600 hover:bg-yellow-500 mb-4'
+                        className='h-10 w-full  sm:w-44 rounded-sm text-white bg-yellow-600 hover:bg-yellow-500 mb-4 '
                     >
                         Вернуться назад
                     </button>

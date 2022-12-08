@@ -48,7 +48,7 @@ const Header: React.FC = () => {
             >
                 <a
                     href='/'
-                    className='text-xl md:text-5xl text-yellow-800 cursor-pointer m-2'
+                    className='text-xl md:text-5xl text-white cursor-pointer m-2'
                 >
                     LOGO
                 </a>
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
                 md:hidden flex flex-col space-y-2 px-10 py-5 pb-10 z-30
                 `}
             >
-                <span className='flex justify-end'>
+                <span className='flex justify-between mb-8'>
                     <Link onClick={() => handleOpenMobNav()} to='personal-area'>
                         {personIcon}
                     </Link>
@@ -86,7 +86,7 @@ const Header: React.FC = () => {
                     >
                         {cartIcon}
                         {cartItems.length ? (
-                            <span className='absolute top-1 right-8 rounded-xl bg-lime-500 w-6 h-6 flex justify-center items-center text-white'>
+                            <span className='absolute top-1 -right-6 rounded-xl bg-lime-500 w-6 h-6 flex justify-center items-center text-white'>
                                 {cartItems.length}
                             </span>
                         ) : null}
