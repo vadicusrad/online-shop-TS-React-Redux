@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './hooks';
-import { getProducts } from './features/productsSlice';
+import { getAllCategories, getProducts } from './features/productsSlice';
 import { RootState } from './store';
 import ProductList from './components/ProductList';
-import { getAllCategories } from './features/categoriesSlice';
+
 import Cart from './components/Cart';
 import Header from './components/header/Header';
 import { Routes, Route } from 'react-router-dom';
@@ -17,14 +17,27 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import About from './components/About';
 function App() {
-    const dispatch = useAppDispatch();
+    const currentTheme = useAppSelector((state) => state.theme.theme);
+
     useEffect(() => {
-        dispatch(getAllCategories());
-        dispatch(getProducts());
-    }, [dispatch]);
+        // if (
+        //     localStorage.theme === 'dark' ||
+        //     (!('theme' in localStorage) &&
+        //         window.matchMedia('(prefers-color-scheme: dark)').matches)
+        // ) {
+        //     document.documentElement.classList.add('dark');
+        // } else {
+        //     document.documentElement.classList.remove('dark');
+        // }
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [currentTheme]);
 
     return (
-        <div className='flex flex-col justify-between relative'>
+        <div className='flex flex-col justify-between relative bg-bg-light dark:bg-bg-dark text-text-secondary'>
             <AutoScrollToTop />
             <ToastContainer />
             <Header />

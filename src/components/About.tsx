@@ -3,7 +3,7 @@ import React from 'react';
 const About = () => {
     return (
         <div className='px-10 md:px-40 my-20  min-h-screen max-h-fit'>
-            <h1 className='text-3xl '>О нас</h1>
+            <h1 className='text-3xl '>О приложении</h1>
             <div className='text-lg my-4'></div>
             <p>
                 Это пет проект для отработки навыков написания работающего,

@@ -9,7 +9,7 @@ import {
     sortProductsByCurrentSortCondition,
 } from '../features/productsSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
-
+import { ICategory } from '../features/productsSlice';
 const SortingTools = () => {
     const dispatch = useAppDispatch();
 
@@ -18,9 +18,8 @@ const SortingTools = () => {
     );
 
     const allCategories = useAppSelector(
-        (state) => state.categories.categories
+        (state) => state.products.allCategories.categories
     );
-
     const priceRange = useAppSelector((state) => state.products.priceRange);
 
     function handleUseAllfilters() {
@@ -55,7 +54,7 @@ const SortingTools = () => {
                 >
                     <option value='all'>all</option>
 
-                    {allCategories.map((category) => {
+                    {allCategories.map((category: ICategory) => {
                         return (
                             <option key={category} value={category}>
                                 {category}

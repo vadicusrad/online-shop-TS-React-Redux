@@ -16,11 +16,12 @@ export interface Product {
     onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-interface ProductState {
+export interface ProductState {
     allProducts: Product[];
     visibleProducts: Product[];
     currentProduct: Product | null;
     currentSortCondition: string;
+    allCategories: CategoryList;
     currentCategory: string;
     priceRange: {
         from: number;
@@ -30,11 +31,31 @@ interface ProductState {
     error: string | null;
 }
 
+export type ICategory = string;
+
+interface CategoryList {
+    categories: ICategory[];
+
+    loading: boolean;
+    error: string | null;
+}
+
+// const initialState: CategoryList = {
+//     categories: [],
+//     loading: false,
+//     error: null,
+// };
+
 const initialState: ProductState = {
     allProducts: [],
     visibleProducts: [],
     currentProduct: null,
     currentSortCondition: 'default',
+    allCategories: {
+        categories: [],
+        loading: false,
+        error: null,
+    },
     currentCategory: 'all',
     priceRange: {
         from: 0,
@@ -54,6 +75,22 @@ export const getProducts = createAsyncThunk<
         return rejectWithValue('Server error!');
     }
     const data = await response.json();
+    return data;
+});
+
+export const getAllCategories = createAsyncThunk<
+    ICategory[],
+    undefined,
+    { rejectValue: string }
+>('products/getAllCategories', async function (_, { rejectWithValue }) {
+    const response = await fetch(
+        'https://fakestoreapi.com/products/categories'
+    );
+    if (!response.ok) {
+        return rejectWithValue('Server error!');
+    }
+    const data = await response.json();
+
     return data;
 });
 
@@ -180,6 +217,14 @@ export const productSlice = createSlice({
         builder.addCase(getSingleProduct.fulfilled, (state, action) => {
             state.loading = false;
             state.currentProduct = action.payload;
+        });
+        builder.addCase(getAllCategories.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        });
+        builder.addCase(getAllCategories.fulfilled, (state, action) => {
+            state.loading = false;
+            state.allCategories.categories = action.payload;
         });
     },
 });
