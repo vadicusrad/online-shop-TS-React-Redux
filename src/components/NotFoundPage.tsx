@@ -9,7 +9,7 @@ const NotFoundPage: React.FC = () => {
                 Вероятно она сейчас находится на стадии разработки. Попробуйте
                 вернуться позже :)
             </p>
-            <button className='h-10 w-44 rounded-sm text-white bg-yellow-600 hover:bg-yellow-500 mb-4'>
+            <button className='h-10 w-44 rounded-sm text-white bg-main-dark hover:bg-yellow-500 mb-4 mt-6'>
                 <Link to='/'>На главную страницу</Link>
             </button>
         </div>

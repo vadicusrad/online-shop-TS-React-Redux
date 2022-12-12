@@ -16,6 +16,7 @@ import AutoScrollToTop from './components/AutoScrollToTop';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import About from './components/About';
+import Contacts from './components/Contacts';
 function App() {
     const currentTheme = useAppSelector((state) => state.theme.theme);
 
@@ -47,6 +48,7 @@ function App() {
                 <Route path='product:id' element={<ProductPage />} />
                 <Route path='search' element={<SearchPage />} />
                 <Route path='about' element={<About />} />
+                <Route path='contacts' element={<Contacts />} />
                 <Route path='*' element={<NotFoundPage />} />
             </Routes>
             <Footer />

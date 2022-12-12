@@ -178,7 +178,7 @@ const Header: React.FC = () => {
                     </span>
                 </div>
                 <div className='px-5 md:px-40 h-14 bg-main-light dark:bg-color-dark text-text-light  md:flex items-center space-x-6 font-light md:sticky md:top-0 opacity-95 z-30'>
-                    <Link to='about'>О компании</Link>
+                    <Link to='about'>О приложении</Link>
                     <Link to='contacts'>Контакты</Link>
                     <Link to='delivery'>Доставка</Link>
                     <Link to='payment'>Оплата</Link>

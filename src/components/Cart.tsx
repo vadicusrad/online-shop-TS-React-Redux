@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { useAppSelector } from '../hooks';
 import CartListItem from './CartListItem';
 
 const Cart: React.FC = () => {
@@ -27,7 +27,7 @@ const Cart: React.FC = () => {
                     <span className='text-2xl mb-4 '>
                         Итого к оплате: ${cartItemsSumm()}
                     </span>
-                    <button className='h-10 w-full text-white bg-yellow-600 hover:bg-yellow-500 rounded-sm'>
+                    <button className='h-10 w-44 rounded-sm text-white bg-main-dark hover:bg-yellow-500 mb-4 mt-6'>
                         Оформить заказ
                     </button>
                 </div>
@@ -47,7 +47,7 @@ const Cart: React.FC = () => {
             )}
             <button
                 onClick={() => navigate(-1)}
-                className='h-10 w-44 rounded-sm text-white bg-yellow-600 hover:bg-yellow-500 mb-4'
+                className='h-10 w-44 rounded-sm text-white bg-main-dark hover:bg-yellow-500 mb-4 mt-6'
             >
                 Вернуться назад
             </button>

@@ -25,7 +25,8 @@ module.exports = {
       'accent-dark': '#E2A027',
       'dark-glass': 'RGBA(2,0,0,0.72)',
       'white': '#FFFFFF',
-      'card-dark': '#2A464F'
+      'card-dark': '#2A464F',
+      'blue': '#0000FF'
 
     },
     extend: {

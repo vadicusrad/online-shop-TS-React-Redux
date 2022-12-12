@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const About = () => {
     return (
@@ -10,7 +11,7 @@ const About = () => {
                 красивого кода.
             </p>
             <h2 className='font-semibold my-2'>
-                Искользуются следующие технологии:
+                Используются следующие технологии:
             </h2>
             <ul>
                 <li>JavaScript</li>
@@ -46,6 +47,15 @@ const About = () => {
                     возрат наверх при смене страницы и т.д.
                 </li>
             </ul>
+            <div className='mt-5'>
+                <button className='h-10 w-44 rounded-sm text-white bg-main-dark hover:bg-yellow-500 mb-4'>
+                    <Link to='/'>На главную страницу</Link>
+                </button>
+
+                <button className='h-10 w-44 rounded-sm text-white bg-main-dark hover:bg-yellow-500 mb-4 ml-6'>
+                    <Link to='/contacts'>Мои контакты</Link>
+                </button>
+            </div>
         </div>
     );
 };
