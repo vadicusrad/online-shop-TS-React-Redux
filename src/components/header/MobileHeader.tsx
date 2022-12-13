@@ -5,6 +5,7 @@ import burger from '../../icons/burger';
 import cartIcon from '../../icons/cartIcon';
 import personIcon from '../../icons/personIcon';
 import { Link } from 'react-router-dom';
+import ThemeToggler from '../ThemeToggler';
 
 const MobileHeader = () => {
     const [openMobNav, setOpenMobNav] = useState(false);
@@ -18,7 +19,7 @@ const MobileHeader = () => {
         <>
             {/*Хэдер для маленьких экранов*/}
             <div
-                className={`fixed top-0 h-14 w-full bg-amber-400 dark:bg-main-dark text-text-light dark:text-text-dark md:hidden flex justify-between items-center px-5 z-70`}
+                className={`fixed top-0 h-14 w-full bg-amber-400 dark:bg-indigo-900 duration-500 text-text-light dark:text-text-dark md:hidden flex justify-between items-center px-5 z-70`}
             >
                 <a
                     href='/'
@@ -27,24 +28,24 @@ const MobileHeader = () => {
                     LOGO
                 </a>
                 <span
-                    className='cursor-pointer'
+                    className='cursor-pointer text-white'
                     onClick={() => handleOpenMobNav()}
                 >
                     {burger}
                 </span>
             </div>
-            {/*Подложка для бокового меню */}
+            {/*Подложка-контейнер для бокового меню */}
             <div
                 onClick={() => handleOpenMobNav()}
                 className={`fixed top-14 h-screen w-screen bg-black/40 z-50 transition-all duration-500 ${
                     openMobNav ? 'inset-0' : 'inset-full'
-                } md:hidden`}
+                } md:hidden flex justify-end dark:text-white`}
             >
                 {/* боковое меню */}
                 <div
-                    className={`fixed h-screen w-3/4 sm:w-2/4 bg-yellow-300 top-14 transition-all duration-500 overflow-auto 
-            // ${openMobNav ? 'right-0 block' : '-right-3/4'}
-        md:hidden flex flex-col space-y-2 px-10 py-5 pb-10 z-60 opacity-100
+                    className={`h-screen w-3/4 sm:w-3/5 bg-yellow-300 dark:bg-gray-700 transition-all duration-500 overflow-auto 
+          
+        md:hidden flex flex-col space-y-2 px-10 py-5 pb-20 z-60
         `}
                     onClick={(e) => e.stopPropagation()}
                 >
@@ -67,6 +68,7 @@ const MobileHeader = () => {
                                 </span>
                             ) : null}
                         </Link>
+                        <ThemeToggler />
                     </span>
 
                     <Link onClick={() => handleOpenMobNav()} to='/'>
