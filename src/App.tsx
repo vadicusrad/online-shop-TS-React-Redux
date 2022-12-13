@@ -17,19 +17,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import About from './components/About';
 import Contacts from './components/Contacts';
+
 function App() {
     const currentTheme = useAppSelector((state) => state.theme.theme);
 
     useEffect(() => {
-        // if (
-        //     localStorage.theme === 'dark' ||
-        //     (!('theme' in localStorage) &&
-        //         window.matchMedia('(prefers-color-scheme: dark)').matches)
-        // ) {
-        //     document.documentElement.classList.add('dark');
-        // } else {
-        //     document.documentElement.classList.remove('dark');
-        // }
         if (currentTheme === 'dark') {
             document.documentElement.classList.add('dark');
         } else {
@@ -38,7 +30,7 @@ function App() {
     }, [currentTheme]);
 
     return (
-        <div className='flex flex-col justify-between relative bg-bg-light dark:bg-bg-dark text-text-secondary'>
+        <div className='flex flex-col justify-between relative bg-stone-50 dark:bg-bg-dark text-text-secondary'>
             <AutoScrollToTop />
             <ToastContainer />
             <Header />

@@ -7,7 +7,7 @@ import personIcon from '../../icons/personIcon';
 import lupeIcon from '../../icons/lupeIcon';
 import burger from '../../icons/burger';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
-import { toggleTheme } from '../../features/themeSlice';
+import { setTheme } from '../../features/themeSlice';
 
 const Header: React.FC = () => {
     const cartItems = useAppSelector((state) => state.cart.order);
@@ -44,9 +44,9 @@ const Header: React.FC = () => {
 
     function hadleSwitchTheme() {
         if (currentTheme === 'light') {
-            dispatch(toggleTheme('dark'));
+            dispatch(setTheme('dark'));
         } else {
-            dispatch(toggleTheme('light'));
+            dispatch(setTheme('light'));
         }
     }
 
@@ -54,7 +54,7 @@ const Header: React.FC = () => {
         <>
             {/*Хэдер на маленькиъ экранах */}
             <div
-                className={`fixed top-0 h-14 w-full bg-main-light dark:bg-main-dark text-text-light dark:text-text-dark md:hidden flex justify-between items-center px-5 z-30`}
+                className={`fixed top-0 h-14 w-full bg-amber-500 dark:bg-main-dark text-text-light dark:text-text-dark md:hidden flex justify-between items-center px-5 z-30`}
             >
                 <a
                     href='/'
@@ -134,7 +134,7 @@ const Header: React.FC = () => {
             </div>
             {/* Меню на больших экранах */}
             <div className='hidden sm:flex flex-col sm:w-full xl:w-[1900px] m-auto text-xs'>
-                <div className='hidden md:flex h-10 bg-main-light dark:bg-main-dark text-text-light dark:text-text-dark justify-between items-center px-5  md:px-20 lg:px-40 font-light '>
+                <div className='hidden md:flex h-7 bg-stone-200 dark:bg-main-dark text-black dark:text-text-dark justify-between items-center px-5  md:px-20 lg:px-40 font-light '>
                     <a href='tel:+7 800 800 80 80'>+7 800 800 80 80</a>
                     <span className='flex space-x-4'>
                         <Link to='delivery'>Доставка</Link>
@@ -144,12 +144,12 @@ const Header: React.FC = () => {
                         <Link to='return-goods'>Возврат товаров</Link>
                     </span>
                 </div>
-                <div className='text-text-secondary hidden h-28 bg-stone-100 md:flex justify-between items-center px-5  md:px-20 lg:px-40'>
+                <div className='bg-stone-200 text-text-secondary hidden h-28 md:flex justify-between items-center px-5  md:px-20 lg:px-40'>
                     <a
                         href='/'
-                        className='text-xl md:text-5xl text-accent-light dark:text-accent-dark cursor-pointer m-2'
+                        className='text-xl md:text-5xl text-red-300 dark:text-accent-dark cursor-pointer m-2'
                     >
-                        LOGO
+                        ВЗЯВ
                     </a>
                     {/* инпут для поиска */}
                     <span className='relative'>
@@ -166,8 +166,10 @@ const Header: React.FC = () => {
                         </span>
                     </span>
                     <span className='flex'>
-                        <Link to='personal-area'>{personIcon}</Link>
-                        <Link className='relative' to='cart'>
+                        <Link className='text-text-dark' to='personal-area'>
+                            {personIcon}
+                        </Link>
+                        <Link className='relative text-text-dark' to='cart'>
                             {cartIcon}
                             {cartItems.length ? (
                                 <span className='absolute top-1 left-8 rounded-xl bg-lime-500 w-6 h-6 flex justify-center items-center text-white'>
@@ -177,7 +179,7 @@ const Header: React.FC = () => {
                         </Link>
                     </span>
                 </div>
-                <div className='px-5 md:px-40 h-14 bg-main-light dark:bg-color-dark text-text-light  md:flex items-center space-x-6 font-light md:sticky md:top-0 opacity-95 z-30'>
+                <div className='px-5 md:px-40 h-14 bg-red-300 dark:bg-blue-900  text-white  md:flex items-center space-x-6 font-light md:sticky md:top-0 z-30'>
                     <Link to='about'>О приложении</Link>
                     <Link to='contacts'>Контакты</Link>
                     <Link to='delivery'>Доставка</Link>

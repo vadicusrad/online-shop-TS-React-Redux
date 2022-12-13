@@ -10,6 +10,8 @@ interface Cart {
     order: CartItem[];
 }
 
+
+
 const initialState: Cart = {
     order: [],
 };

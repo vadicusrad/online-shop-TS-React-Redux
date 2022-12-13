@@ -13,22 +13,23 @@ module.exports = {
 
 
     },
-    colors: {
-      'bg-light': '#FAFAF8',
-      'bg-dark': '#252C35',
-      'text-light': '#FAFAF8',
-      'text-secondary': '#05264E',
-      'text-dark': '#638E95',
-      'main-light': '#67B380',
-      'main-dark': '#025259',
-      'accent-light': '#C2493B',
-      'accent-dark': '#E2A027',
-      'dark-glass': 'RGBA(2,0,0,0.72)',
-      'white': '#FFFFFF',
-      'card-dark': '#2A464F',
-      'blue': '#0000FF'
+    // colors: {
+    //   'bg-light': '#FAFAF8',
+    //   'bg-dark': '#252C35',
+    //   'main-second': '#083D77',
+    //   'text-light': '#FAFAF8',
+    //   'text-secondary': '#05264E',
+    //   'text-dark': '#EBEBD3',
+    //   'main-light': '#F4D35E',
+    //   'main-dark': '#025259',
+    //   'accent-light': '#C2493B',
+    //   'accent-dark': '#E2A027',
+    //   'dark-glass': 'RGBA(2,0,0,0.72)',
+    //   'white': '#FFFFFF',
+    //   'card-dark': '#2A464F',
+    //   'blue': '#0000FF'
 
-    },
+    // },
     extend: {
 
       container: {
