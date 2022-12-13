@@ -17,6 +17,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import About from './components/About';
 import Contacts from './components/Contacts';
+import BottomHeader from './components/header/BottomHeader';
 
 function App() {
     const currentTheme = useAppSelector((state) => state.theme.theme);
@@ -34,6 +35,7 @@ function App() {
             <AutoScrollToTop />
             <ToastContainer />
             <Header />
+            <BottomHeader />
             <Routes>
                 <Route index element={<ProductList />} />
                 <Route path='cart' element={<Cart />} />

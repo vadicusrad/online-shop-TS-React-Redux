@@ -1,0 +1,75 @@
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { filterBySearchString } from '../../features/productsSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useScrollBlock } from '../../hooks/useScrollBlock';
+import cartIcon from '../../icons/cartIcon';
+import lupeIcon from '../../icons/lupeIcon';
+import personIcon from '../../icons/personIcon';
+
+const MiddleHeader = () => {
+    // стейт для инпута поиска
+    const [searchInput, setSearchInput] = useState('');
+
+    let navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
+    // переменная для хранения продуктов из корзины
+    const cartItems = useAppSelector((state) => state.cart.order);
+
+    // функция запускает фильтрацию по строке при нажатии на Ентер
+    function onKeyEnter(eKey: string) {
+        if (eKey === 'Enter') {
+            if (searchInput.length) {
+                dispatch(filterBySearchString(searchInput));
+                navigate('search');
+                setSearchInput('');
+            }
+        }
+    }
+    // функция запускает фильтрацию по строке при клике на значок поиска
+    function handleSearchStringChange() {
+        if (searchInput.length) {
+            dispatch(filterBySearchString(searchInput));
+            navigate('search');
+        }
+    }
+
+    return (
+        <div className='bg-stone-200 text-text-secondary hidden h-28 md:flex justify-between items-center px-5  md:px-20 lg:px-40 '>
+            <a
+                href='/'
+                className='text-xl md:text-5xl text-red-300 dark:text-accent-dark cursor-pointer m-2'
+            >
+                LOGO
+            </a>
+            {/* инпут для поиска */}
+            <span className='relative'>
+                <input
+                    className='h-10 w-[200px] md:w-[300px] lg:w-[500px] border-text-secondary border-[1px] bg-bg-light text-text-secondary rounded sm:pl-3 focus:outline-none'
+                    type='text'
+                    placeholder='Поиск'
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                    onKeyDown={(e) => onKeyEnter(e.key)}
+                />
+                <span onClick={handleSearchStringChange}>{lupeIcon}</span>
+            </span>
+            <span className='flex'>
+                <Link className='text-text-dark' to='personal-area'>
+                    {personIcon}
+                </Link>
+                <Link className='relative text-text-dark' to='cart'>
+                    {cartIcon}
+                    {cartItems.length ? (
+                        <span className='absolute top-1 left-8 rounded-xl bg-lime-500 w-6 h-6 flex justify-center items-center text-white'>
+                            {cartItems.length}
+                        </span>
+                    ) : null}
+                </Link>
+            </span>
+        </div>
+    );
+};
+
+export default MiddleHeader;
