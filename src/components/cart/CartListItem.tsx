@@ -3,9 +3,9 @@ import {
     changeCartItemCounterDown,
     changeCartItemCounterUp,
     deleteItemFromCart,
-} from '../features/cartSlice';
-import { CartItem } from '../features/cartSlice';
-import { useAppDispatch } from '../hooks';
+} from '../../features/cartSlice';
+import { CartItem } from '../../features/cartSlice';
+import { useAppDispatch } from '../../hooks/hooks';
 
 const CartListItem: React.FC<CartItem> = ({
     title,

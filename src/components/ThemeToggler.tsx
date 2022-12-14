@@ -1,6 +1,6 @@
 import React from 'react';
 import { setTheme } from '../features/themeSlice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 const ThemeToggler = () => {
     const currentTheme = useAppSelector((state) => state.theme.theme);

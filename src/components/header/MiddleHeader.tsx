@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { filterBySearchString } from '../../features/productsSlice';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
 import cartIcon from '../../icons/cartIcon';
 import lupeIcon from '../../icons/lupeIcon';

@@ -1,23 +1,20 @@
 import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from './hooks';
-import { getAllCategories, getProducts } from './features/productsSlice';
-import { RootState } from './store';
-import ProductList from './components/ProductList';
-
-import Cart from './components/Cart';
+import { useAppSelector } from './hooks/hooks';
+import ProductList from './components/products/ProductList';
+import Cart from './components/cart/Cart';
 import Header from './components/header/Header';
 import { Routes, Route } from 'react-router-dom';
-import ProductPage from './components/ProductPage';
-import SearchPage from './components/SearchPage';
-import NotFoundPage from './components/NotFoundPage';
-import Footer from './components/Footer';
+import ProductPage from './components/products/ProductPage';
+import SearchPage from './components/pages/SearchPage';
+import NotFoundPage from './components/pages/NotFoundPage';
+import Footer from './components/footer/Footer';
 import BtnScrollTop from './components/BtnScrollTop';
-import AutoScrollToTop from './components/AutoScrollToTop';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import About from './components/About';
-import Contacts from './components/Contacts';
+import About from './components/pages/About';
+import Contacts from './components/pages/Contacts';
 import BottomHeader from './components/header/BottomHeader';
+import useAutoScrollToTop from './hooks/useAutoScrollToTop';
 
 function App() {
     const currentTheme = useAppSelector((state) => state.theme.theme);
@@ -30,9 +27,9 @@ function App() {
         }
     }, [currentTheme]);
 
+    useAutoScrollToTop();
     return (
         <div className='flex flex-col justify-between relative bg-stone-50 dark:bg-bg-dark text-text-secondary'>
-            <AutoScrollToTop />
             <ToastContainer
                 theme={currentTheme === 'dark' ? 'dark' : 'light'}
             />

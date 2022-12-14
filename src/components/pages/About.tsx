@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const About = () => {
     return (
-        <div className='px-10 md:px-40 my-20  min-h-screen max-h-fit'>
+        <div className='px-10 md:px-40 my-10  min-h-screen max-h-fit'>
             <h1 className='text-3xl '>О приложении</h1>
             <div className='text-lg my-4'></div>
             <p>
@@ -17,7 +17,8 @@ const About = () => {
                 <li>JavaScript</li>
                 <li>React</li>
                 <li>ReduxToolkit</li>
-                <li>Tailwind</li>
+                <li>Redux persist</li>
+                <li>Tailwind CSS</li>
                 <li>React router dom</li>
                 <li>Toastify</li>
             </ul>
@@ -38,8 +39,13 @@ const About = () => {
                 <li>Автоматический расчет стоимости товаров в корзине</li>
                 <li>Адаптация стилей под разные экраны</li>
                 <li>
-                    Добавлены мини карточки для оповещения пользователя о
-                    происходящих событиях
+                    Мини карточки для оповещения пользователя о происходящих
+                    событиях
+                </li>
+                <li>Темный режим</li>
+                <li>
+                    Сохранение информации о товарах корзины и выбранной теме в
+                    памяти браузера
                 </li>
                 <li>
                     Реализованы иные маленькие, но важные функции например

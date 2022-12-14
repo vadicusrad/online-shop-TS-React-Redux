@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { addItemToCart } from '../features/cartSlice';
-import { getSingleProduct } from '../features/productsSlice';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import loadingIcon from '../icons/loadingIcon';
-import { Product } from '../features/productsSlice';
+import { addItemToCart } from '../../features/cartSlice';
+import { getSingleProduct } from '../../features/productsSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import loadingIcon from '../../icons/loadingIcon';
+import { Product } from '../../features/productsSlice';
 const ProductPage: React.FC = () => {
     let params = useParams();
     let navigate = useNavigate();

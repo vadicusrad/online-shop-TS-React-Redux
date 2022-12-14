@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks/hooks';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
 import burger from '../../icons/burger';
 import cartIcon from '../../icons/cartIcon';

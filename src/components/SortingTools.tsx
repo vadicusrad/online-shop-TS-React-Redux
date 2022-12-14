@@ -8,7 +8,7 @@ import {
     setPriceRange,
     sortProductsByCurrentSortCondition,
 } from '../features/productsSlice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import { ICategory } from '../features/productsSlice';
 const SortingTools = () => {
     const dispatch = useAppDispatch();

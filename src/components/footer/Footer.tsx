@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import emailIcon from '../icons/emailIcon';
-import githubIcon from '../icons/githubIcon';
-import telegramIcon from '../icons/telegramIcon';
-import vkIcon from '../icons/vkIcon';
+import emailIcon from '../../icons/emailIcon';
+import githubIcon from '../../icons/githubIcon';
+import telegramIcon from '../../icons/telegramIcon';
+import vkIcon from '../../icons/vkIcon';
 
 const Footer = () => {
     return (

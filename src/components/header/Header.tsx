@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { Link, useNavigate } from 'react-router-dom';
 import { filterBySearchString } from '../../features/productsSlice';
 import cartIcon from '../../icons/cartIcon';

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../hooks';
-import ProductCard from './ProductCard';
-import SortingTools from './SortingTools';
+import { useAppSelector } from '../../hooks/hooks';
+import ProductCard from '../products/ProductCard';
+import SortingTools from '../SortingTools';
 
 const SearchPage: React.FC = () => {
     const searchItems = useAppSelector(

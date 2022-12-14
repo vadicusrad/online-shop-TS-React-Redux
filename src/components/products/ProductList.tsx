@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { getAllCategories, getProducts } from '../features/productsSlice';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import loadingIcon from '../icons/loadingIcon';
+import { getAllCategories, getProducts } from '../../features/productsSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import loadingIcon from '../../icons/loadingIcon';
 import ProductCard from './ProductCard';
-import SortingTools from './SortingTools';
+import SortingTools from '../SortingTools';
 
 const ProductList: React.FC = () => {
     const visibleProducts = useAppSelector(

@@ -1,7 +1,7 @@
 import React from 'react';
-import { addItemToCart } from '../features/cartSlice';
-import { Product } from '../features/productsSlice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { addItemToCart } from '../../features/cartSlice';
+import { Product } from '../../features/productsSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { Link } from 'react-router-dom';
 import { Theme, toast } from 'react-toastify';
 
