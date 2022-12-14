@@ -1,12 +1,13 @@
 import React from 'react';
 import { addItemToCart } from '../features/cartSlice';
 import { Product } from '../features/productsSlice';
-import { useAppDispatch } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { Theme, toast } from 'react-toastify';
 
 const ProductCard: React.FC<Product> = (product) => {
     const dispatch = useAppDispatch();
+
     function handleAdditemInCart() {
         dispatch(addItemToCart(product));
         toast.success('Товар добавлен в корзину', {
@@ -17,12 +18,11 @@ const ProductCard: React.FC<Product> = (product) => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: 'colored',
         });
     }
 
     return (
-        <div className='bg-white dark:bg-card-dark dark:text-text-dark group w-full sm:w-[200px] md:w-[180px] h-96 flex flex-col justify-between  p-4 cursor-pointer hover:shadow-sm'>
+        <div className='bg-white dark:bg-card-dark dark:text-text-dark group w-full sm:w-[200px] md:w-[180px] h-96 flex flex-col justify-between hover:shadow-md p-4 cursor-pointer'>
             <Link
                 to={`product${product.id}`}
                 className='flex flex-col items-center justify-between h-5/6 '
@@ -32,7 +32,7 @@ const ProductCard: React.FC<Product> = (product) => {
                     src={product.image}
                     alt={product.title}
                 />
-                <span className='text-ellipsis overflow-hidden ...  h-22 w-full group-hover:text-yellow-600 mt-4'>
+                <span className='text-ellipsis overflow-hidden ...  h-22 w-full  mt-4'>
                     {product.title}
                 </span>
                 <span className='text-left w-full mt-2'>${product.price}</span>
@@ -40,7 +40,7 @@ const ProductCard: React.FC<Product> = (product) => {
 
             <button
                 onClick={() => handleAdditemInCart()}
-                className='h-10 w-full bg-main-light text-text-light no-sens:opacity-0  hover:bg-yellow-500 group-hover:opacity-100 '
+                className='h-10 w-full bg-gray-400 text-white no-sens:opacity-0  hover:bg-lime-500 group-hover:opacity-100 duration-300'
             >
                 В корзину
             </button>

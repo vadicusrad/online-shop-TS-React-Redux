@@ -39,7 +39,7 @@ const MiddleHeader = () => {
         <div className='bg-stone-200 text-text-secondary hidden h-28 md:flex justify-between items-center px-5  md:px-20 lg:px-40 '>
             <a
                 href='/'
-                className='text-xl md:text-5xl text-red-300 dark:text-accent-dark cursor-pointer m-2'
+                className='text-xl md:text-5xl text-lime-500 dark:text-accent-dark cursor-pointer m-2'
             >
                 LOGO
             </a>
@@ -55,7 +55,7 @@ const MiddleHeader = () => {
                 />
                 <span onClick={handleSearchStringChange}>{lupeIcon}</span>
             </span>
-            <span className='flex'>
+            <span className='flex space-x-4'>
                 <Link className='text-text-dark' to='personal-area'>
                     {personIcon}
                 </Link>

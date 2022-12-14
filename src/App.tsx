@@ -33,7 +33,9 @@ function App() {
     return (
         <div className='flex flex-col justify-between relative bg-stone-50 dark:bg-bg-dark text-text-secondary'>
             <AutoScrollToTop />
-            <ToastContainer />
+            <ToastContainer
+                theme={currentTheme === 'dark' ? 'dark' : 'light'}
+            />
             <Header />
             <BottomHeader />
             <Routes>

@@ -40,12 +40,6 @@ interface CategoryList {
     error: string | null;
 }
 
-// const initialState: CategoryList = {
-//     categories: [],
-//     loading: false,
-//     error: null,
-// };
-
 const initialState: ProductState = {
     allProducts: [],
     visibleProducts: [],

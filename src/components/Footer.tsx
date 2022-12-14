@@ -7,10 +7,10 @@ import vkIcon from '../icons/vkIcon';
 
 const Footer = () => {
     return (
-        <footer className='w-full bg-stone-200 text-text-light px-10 md:px-20 xl:px-40 py-5 md:py-10 pb-12'>
+        <footer className='w-full bg-stone-500 text-text-light px-10 md:px-20 xl:px-40 py-5 md:py-10 pb-12'>
             <a
                 href='/'
-                className='text-5xl  cursor-pointer m-2 hidden md:block '
+                className='text-5xl text-lime-500 cursor-pointer hidden md:block '
             >
                 LOGO
             </a>

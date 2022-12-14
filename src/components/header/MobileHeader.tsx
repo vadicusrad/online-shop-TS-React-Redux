@@ -19,7 +19,7 @@ const MobileHeader = () => {
         <>
             {/*Хэдер для маленьких экранов*/}
             <div
-                className={`fixed top-0 h-14 w-full bg-amber-400 dark:bg-indigo-900 duration-500 text-text-light dark:text-text-dark md:hidden flex justify-between items-center px-5 z-70`}
+                className={`fixed top-0 h-14 w-full bg-red-400 dark:bg-indigo-900 duration-500 text-text-light dark:text-text-dark md:hidden flex justify-between items-center px-5 z-30`}
             >
                 <a
                     href='/'
@@ -38,12 +38,12 @@ const MobileHeader = () => {
             <div
                 onClick={() => handleOpenMobNav()}
                 className={`fixed top-14 h-screen w-screen bg-black/40 z-50 transition-all duration-500 ${
-                    openMobNav ? 'inset-0' : 'inset-full'
+                    openMobNav ? 'inset-0' : '-inset-full'
                 } md:hidden flex justify-end dark:text-white`}
             >
                 {/* боковое меню */}
                 <div
-                    className={`h-screen w-3/4 sm:w-3/5 bg-yellow-300 dark:bg-gray-700 transition-all duration-500 overflow-auto 
+                    className={`h-screen w-3/4 sm:w-3/5 bg-green-100 dark:bg-gray-700 transition-all duration-600 overflow-auto 
           
         md:hidden flex flex-col space-y-2 px-10 py-5 pb-20 z-60
         `}
