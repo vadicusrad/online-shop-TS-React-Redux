@@ -5,7 +5,7 @@ const lupeIcon = <svg
     viewBox='0 0 24 24'
     strokeWidth='1.5'
     stroke='currentColor'
-    className='w-6 h-6 absolute top-2 right-5 text-yellow-600 cursor-pointer '
+    className='w-6 h-6 absolute top-2 right-5  cursor-pointer '
 >
     <path
         strokeLinecap='round'

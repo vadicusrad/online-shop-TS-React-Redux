@@ -29,7 +29,7 @@ function App() {
 
     useAutoScrollToTop();
     return (
-        <div className='flex flex-col justify-between relative bg-stone-50 dark:bg-bg-dark text-text-secondary'>
+        <div className='flex flex-col justify-between relative bg-stone-50 dark:bg-stone-800 text-text-secondary'>
             <ToastContainer
                 theme={currentTheme === 'dark' ? 'dark' : 'light'}
             />

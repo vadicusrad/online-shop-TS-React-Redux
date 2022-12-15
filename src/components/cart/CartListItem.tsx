@@ -17,7 +17,7 @@ const CartListItem: React.FC<CartItem> = ({
     const dispatch = useAppDispatch();
 
     return (
-        <div className='p-4 w-full h-32 relative flex shadow-sm z-10'>
+        <div className='p-4 h-32 relative flex shadow-sm z-10 dark:bg-gray-700 mb-2 mr-4'>
             <span
                 className='absolute right-3 top-0 cursor-pointer text-slate-500'
                 onClick={() => dispatch(deleteItemFromCart(id))}
@@ -34,19 +34,19 @@ const CartListItem: React.FC<CartItem> = ({
                     {title}
                 </h2>
                 <p className='text-yellow-600 '>${price}</p>
-                <div className='bg-yellow-600 h-7 w-24 text-white flex justify-between rounded-sm'>
+                <div className='  h-7 w-24 text-white flex justify-between rounded-sm'>
                     <button
                         onClick={() => dispatch(changeCartItemCounterUp(id))}
-                        className='h-full w-1/3 bg-yellow-600 hover:bg-yellow-500 rounded-l-sm'
+                        className='h-full w-1/3 bg-yellow-600 dark:bg-inherit dark:text-yellow-600 hover:border hover:border-yellow-600 rounded-l-sm'
                     >
                         +
                     </button>
-                    <span className='w-1/3  flex justify-center items-center'>
+                    <span className='w-1/3 dark:text-gray-400  flex justify-center items-center'>
                         {counter}
                     </span>
                     <button
                         onClick={() => dispatch(changeCartItemCounterDown(id))}
-                        className='h-full w-1/3 bg-yellow-600 hover:bg-yellow-500 rounded-r-sm'
+                        className='h-full w-1/3  bg-yellow-600 dark:bg-inherit dark:text-yellow-600 hover:border hover:border-yellow-600 rounded-r-sm'
                     >
                         -
                     </button>

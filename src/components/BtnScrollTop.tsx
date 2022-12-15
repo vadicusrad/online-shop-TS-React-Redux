@@ -27,7 +27,7 @@ const BtnScrollTop: React.FC = () => {
 
     return (
         <div
-            className={`w-10 h-10 bg-red-400 fixed bottom-5 right-5 transition-all duration-1000 text-white rounded-md flex justify-center items-center
+            className={`w-10 h-10 bg-red-400 dark:bg-yellow-600 fixed bottom-5 right-5 transition-all duration-1000 text-white rounded-md flex justify-center items-center
             ${upBtnVisible}`}
             onClick={() => scrollToUp()}
         >

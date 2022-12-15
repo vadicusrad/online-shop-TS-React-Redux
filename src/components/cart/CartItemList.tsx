@@ -20,11 +20,11 @@ const CartItemsList = () => {
                         return <CartListItem {...item} key={item.id} />;
                     })}
             </div>
-            <div className='w-full sm:w-[400px] md:w-1/3 bg-slate-200 p-6 flex items-center flex-col sticky top-28 mt-5 mb-10 md:m-0'>
+            <div className='w-full sm:w-[400px] md:w-1/3 bg-stone-200  dark:bg-slate-800  p-6 flex items-center flex-col sticky top-28 mt-5 mb-10 md:m-0'>
                 <span className='text-2xl mb-4 '>
                     Итого к оплате: ${cartItemsSumm()}
                 </span>
-                <button className='h-10 w-44 rounded-sm text-white bg-main-dark hover:bg-yellow-500 mb-4 mt-6'>
+                <button className='h-10 w-44 rounded-sm bg-gray-400 text-white dark:text-yellow-600 hover:bg-lime-500 dark:bg-inherit dark:hover:border dark:hover:border-yellow-600 mb-4 mt-6'>
                     Оформить заказ
                 </button>
             </div>

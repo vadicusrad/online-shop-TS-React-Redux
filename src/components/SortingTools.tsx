@@ -43,11 +43,11 @@ const SortingTools = () => {
     }
 
     return (
-        <div className='mt-2  flex flex-col md:items-end md:flex-row md:flex-wrap align-center md:px-20 lg:px-40 space-y-3'>
+        <div className='mt-2  flex flex-col md:items-end md:flex-row md:flex-wrap align-center md:px-20 lg:px-40 space-y-3 dark:text-gray-300'>
             <div>
                 <span className='mr-2'>Категории:</span>
                 <select
-                    className='h-6 border'
+                    className='h-6 border dark:bg-slate-600 dark:text-gray-400 dark:border-none rounded-sm'
                     name='categorySelect'
                     id='categorySelect'
                     onChange={(e) => handleSetCurrentCategory(e.target.value)}
@@ -63,26 +63,26 @@ const SortingTools = () => {
                     })}
                 </select>
             </div>
-            <div className='md:mx-6'>
+            <div className='md:mx-6 '>
                 <span className='mr-2'>Сортировка:</span>
                 <select
                     value={currentSelectValue}
-                    className='h-6 border'
+                    className='h-6 border dark:bg-slate-600 dark:text-gray-400 dark:border-none rounded-sm'
                     name='sortSelect'
                     id='sortSelect'
                     onChange={(e) => handleSetSortSelect(e.target.value)}
                 >
-                    <option value='default'>По умолчанию</option>
-                    <option value='descending'>Сначала дорогие</option>
-                    <option value='ascending'>Сначала дешевые</option>
-                    <option value='byrating'>По рейтингу</option>
+                    <option value='default'>по умолчанию</option>
+                    <option value='descending'>сначала дорогие</option>
+                    <option value='ascending'>сначала дешевые</option>
+                    <option value='byrating'>по рейтингу</option>
                 </select>
             </div>
             <div className=''>
                 <span>
                     Цена:
                     <input
-                        className='h-6 border ml-2 w-20'
+                        className='h-6 border ml-2 w-20 dark:bg-slate-600 dark:text-gray-400 dark:border-none rounded-sm pl-1'
                         type='number'
                         onChange={(e) =>
                             handleSetPriceRange({
@@ -96,7 +96,7 @@ const SortingTools = () => {
                 <span className='ml-2'>
                     До:{' '}
                     <input
-                        className='h-6 border ml-2 w-24'
+                        className='h-6 border ml-2 w-24 dark:bg-slate-600 dark:text-gray-400 dark:border-none rounded-sm pl-1'
                         type='number'
                         onChange={(e) =>
                             handleSetPriceRange({
@@ -108,7 +108,7 @@ const SortingTools = () => {
                     />
                 </span>
                 <button
-                    className='h-6 border ml-2 px-2'
+                    className='h-6 border ml-2 px-2 rounded-sm text-sm dark:text-yellow-600 dark:border-yellow-600'
                     onClick={() => handleUseAllfilters()}
                 >
                     OK
