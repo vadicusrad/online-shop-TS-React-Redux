@@ -20,7 +20,7 @@ const CartItemsList = () => {
                         return <CartListItem {...item} key={item.id} />;
                     })}
             </div>
-            <div className='w-full sm:w-[400px] md:w-1/3 bg-stone-200  dark:bg-slate-800  p-6 flex items-center flex-col sticky top-28 mt-5 mb-10 md:m-0'>
+            <div className='w-full sm:w-[400px] md:w-1/3 bg-stone-200  dark:bg-slate-800  p-6 flex items-center flex-col sticky top-28 mt-5 mb-10 md:m-0 shadow-xl'>
                 <span className='text-2xl mb-4 '>
                     Итого к оплате: ${cartItemsSumm()}
                 </span>

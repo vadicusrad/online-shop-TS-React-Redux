@@ -43,7 +43,7 @@ const MobileHeader = () => {
             >
                 {/* боковое меню */}
                 <div
-                    className={`h-screen w-3/4 sm:w-3/5 bg-green-100 dark:bg-gray-700 transition-all duration-600 overflow-auto 
+                    className={`h-screen w-3/4 sm:w-3/5 bg-stone-200 dark:bg-gray-700 transition-all duration-600 overflow-auto 
           
         md:hidden flex flex-col space-y-2 px-10 py-5 pb-20 z-60
         `}

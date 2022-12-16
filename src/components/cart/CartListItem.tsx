@@ -41,7 +41,7 @@ const CartListItem: React.FC<CartItem> = ({
                     >
                         +
                     </button>
-                    <span className='w-1/3 dark:text-gray-400  flex justify-center items-center'>
+                    <span className='w-1/3 dark:text-gray-400 text-black flex justify-center items-center'>
                         {counter}
                     </span>
                     <button

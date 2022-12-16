@@ -107,7 +107,7 @@ const SortingTools = () => {
                     />
                 </span>
                 <button
-                    className='h-6 border ml-2 px-2 rounded-sm text-sm dark:text-yellow-600 dark:border-yellow-600'
+                    className='h-6 border ml-2 px-2 rounded-sm text-sm dark:hover:text-yellow-600 dark:hover:border-yellow-600 duration-300'
                     onClick={() => handleUseAllfilters()}
                 >
                     OK
