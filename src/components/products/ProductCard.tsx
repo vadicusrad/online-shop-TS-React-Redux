@@ -4,6 +4,7 @@ import { Product } from '../../features/productsSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { Link } from 'react-router-dom';
 import { Theme, toast } from 'react-toastify';
+import ButtonComponent from '../ButtonComponent';
 
 const ProductCard: React.FC<Product> = (product) => {
     const dispatch = useAppDispatch();
@@ -41,13 +42,18 @@ const ProductCard: React.FC<Product> = (product) => {
                     </span>
                 </div>
             </Link>
-            <div className='absolute bottom-0 left-0  w-full h-0 group-hover:h-20 group-hover:bottom-10 bg-red-400/0  dark:group-hover:bg-gray-700 group-hover:bg-white  duration-300 flex justify-center pt-4'>
-                <button
+            <div
+                //     className='absolute bottom-0 left-0  w-full h-0 group-hover:h-20 group-hover:bottom-10 bg-red-400/0  dark:group-hover:bg-gray-700 group-hover:bg-white  duration-300 flex justify-center
+
+                // '
+                className='absolute h-10 bottom-10 left-28 md:bottom-0 md:left-0  w-full md:h-0 group-hover:h-20 group-hover:bottom-10 bg-red-400/0  dark:group-hover:bg-gray-700 group-hover:bg-white  duration-300 flex justify-center
+                    sm:bottom-6 sm:left-12 
+                '
+            >
+                <ButtonComponent
                     onClick={() => handleAdditemInCart()}
-                    className='w-4/5 h-[30px] sm:left-[10px]  bg-gray-400 dark:bg-gray-700 text-white no-sens:opacity-100  hover:bg-lime-500 dark:hover:bg-gray-700 dark:hover:text-yellow-500  dark:hover:border dark:hover:border-yellow-600 group-hover:opacity-100 duration-300 rounded-sm'
-                >
-                    В корзину
-                </button>
+                    children='В корзину'
+                />
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../../hooks/hooks';
+import ButtonComponent from '../ButtonComponent';
 import CartListItem from './CartListItem';
 
 const CartItemsList = () => {
@@ -24,9 +25,11 @@ const CartItemsList = () => {
                 <span className='text-2xl mb-4 '>
                     Итого к оплате: ${cartItemsSumm()}
                 </span>
-                <button className='h-10 w-44 rounded-sm bg-gray-400 text-white dark:text-yellow-600 hover:bg-lime-500 dark:bg-inherit dark:hover:border dark:hover:border-yellow-600 mb-4 mt-6'>
-                    Оформить заказ
-                </button>
+
+                <ButtonComponent
+                    children='Оформить заказ'
+                    onClick={() => console.log('Здесь будет оформление заказа')}
+                />
             </div>
         </div>
     );

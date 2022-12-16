@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
+import ButtonComponent from '../ButtonComponent';
 import CartItemsList from './CartItemList';
 
 const Cart: React.FC = () => {
@@ -17,12 +18,11 @@ const Cart: React.FC = () => {
             ) : (
                 <p className='my-14 text-2xl px-10'>Ваша корзина пуста</p>
             )}
-            <button
+
+            <ButtonComponent
+                children='Вернуться назад'
                 onClick={() => navigate(-1)}
-                className='h-10 w-44 rounded-sm bg-gray-400 text-white dark:text-yellow-600 hover:bg-lime-500 dark:bg-inherit dark:hover:border dark:hover:border-yellow-600 mb-4 mt-6'
-            >
-                Вернуться назад
-            </button>
+            />
         </div>
     );
 };

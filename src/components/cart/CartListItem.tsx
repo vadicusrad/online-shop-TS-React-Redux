@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
     changeCartItemCounterDown,
     changeCartItemCounterUp,
@@ -31,7 +32,7 @@ const CartListItem: React.FC<CartItem> = ({
             />
             <div className='flex flex-col justify-between '>
                 <h2 className='font-bold lg:text-xl overflow-hidden '>
-                    {title}
+                    <Link to={`/product${id}`}>{title}</Link>
                 </h2>
                 <p className='text-yellow-600 '>${price}</p>
                 <div className='  h-7 w-24 text-white flex justify-between rounded-sm'>

@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import loadingIcon from '../../icons/loadingIcon';
 import { Product } from '../../features/productsSlice';
 import LinkComponent from '../LinkComponent';
+import ButtonComponent from '../ButtonComponent';
 const ProductPage: React.FC = () => {
     let params = useParams();
     let navigate = useNavigate();
@@ -43,7 +44,7 @@ const ProductPage: React.FC = () => {
                 </div>
             )}
             {currentProduct && (
-                <div className='flex flex-col items-center px-5'>
+                <div className='flex flex-col items-center px-5 py-5'>
                     <div className='flex flex-col md:flex-row lg:px-40 py-10 md:py-10  max-h-fit'>
                         <div className='h-[250px] w-full md:w-1/2 flex justify-center'>
                             <img
@@ -64,24 +65,17 @@ const ProductPage: React.FC = () => {
                                 ${currentProduct.price}
                             </span>
 
-                            <button
+                            <ButtonComponent
+                                children='В корзину'
                                 onClick={() =>
                                     handleAdditemInCart(currentProduct)
                                 }
-                                className='h-10 w-44 rounded-sm text-white bg-lime-500 hover:shadow-lg mb-4 mt-4 duration-300'
-                            >
-                                В корзину
-                            </button>
+                            />
+
                             <hr className='w-full mb-4' />
                             <p>{currentProduct.description}</p>
                         </div>
                     </div>
-                    {/* <button
-                        onClick={() => navigate(-1)}
-                        className='h-10 w-44 rounded-sm text-white bg-lime-500 hover:bg-yellow-500 mb-4 mt-4'
-                    >
-                        Вернуться назад
-                    </button> */}
                     <LinkComponent to='/' children='На главную' />
                 </div>
             )}
