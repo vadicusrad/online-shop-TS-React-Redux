@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { addItemToCart } from '../../features/cartSlice';
 import { getSingleProduct } from '../../features/productsSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import loadingIcon from '../../icons/loadingIcon';
 import { Product } from '../../features/productsSlice';
+import LinkComponent from '../LinkComponent';
 const ProductPage: React.FC = () => {
     let params = useParams();
     let navigate = useNavigate();
@@ -75,12 +76,13 @@ const ProductPage: React.FC = () => {
                             <p>{currentProduct.description}</p>
                         </div>
                     </div>
-                    <button
+                    {/* <button
                         onClick={() => navigate(-1)}
                         className='h-10 w-44 rounded-sm text-white bg-lime-500 hover:bg-yellow-500 mb-4 mt-4'
                     >
                         Вернуться назад
-                    </button>
+                    </button> */}
+                    <LinkComponent to='/' children='На главную' />
                 </div>
             )}
         </>

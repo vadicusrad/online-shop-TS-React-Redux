@@ -19,7 +19,7 @@ const MobileHeader = () => {
         <>
             {/*Хэдер для маленьких экранов*/}
             <div
-                className={`fixed top-0 h-14 w-full bg-red-400 dark:bg-indigo-900 duration-500 text-text-light dark:text-text-dark md:hidden flex justify-between items-center px-5 z-30`}
+                className={`fixed top-0 h-14 w-full bg-red-400 dark:bg-slate-800 duration-500 text-text-light dark:text-text-dark md:hidden flex justify-between items-center px-5 z-30`}
             >
                 <a
                     href='/'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import LinkComponent from '../LinkComponent';
 
 const Contacts = () => {
     return (
@@ -11,7 +11,7 @@ const Contacts = () => {
                     target='blank'
                     rel='noreferrer noopener'
                     href='https://t.me/Vadicus'
-                    className='text-blue'
+                    className='text-blue-500'
                 >
                     Телеграм
                 </a>
@@ -22,14 +22,12 @@ const Contacts = () => {
                     target='blank'
                     rel='noreferrer noopener'
                     href='https://github.com/vadicusrad'
-                    className='text-blue'
+                    className='text-blue-500'
                 >
                     GitHub.
                 </a>
             </p>
-            <button className='h-10 w-44 rounded-sm text-white bg-main-dark hover:bg-yellow-500 mb-4 mt-6'>
-                <Link to='/'>На главную страницу</Link>
-            </button>
+            <LinkComponent children='На главную' to='/' />
         </div>
     );
 };

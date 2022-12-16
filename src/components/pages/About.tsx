@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import LinkComponent from '../LinkComponent';
 
 const About = () => {
     return (
@@ -53,14 +53,10 @@ const About = () => {
                     возрат наверх при смене страницы и т.д.
                 </li>
             </ul>
-            <div className='mt-5'>
-                <button className='h-10 w-44 rounded-sm text-white bg-main-dark hover:bg-yellow-500 mb-4'>
-                    <Link to='/'>На главную страницу</Link>
-                </button>
+            <div className='mt-5 flex space-x-4'>
+                <LinkComponent to='/'>На главную страницу</LinkComponent>
 
-                <button className='h-10 w-44 rounded-sm text-white bg-main-dark hover:bg-yellow-500 mb-4 ml-6'>
-                    <Link to='/contacts'>Мои контакты</Link>
-                </button>
+                <LinkComponent to='/contacts'>Мои контакты</LinkComponent>
             </div>
         </div>
     );

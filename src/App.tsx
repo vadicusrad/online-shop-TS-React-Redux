@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
 import { useAppSelector } from './hooks/hooks';
+import { ToastContainer } from 'react-toastify';
+import { Routes, Route } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+// components
 import ProductList from './components/products/ProductList';
 import Cart from './components/cart/Cart';
 import Header from './components/header/Header';
-import { Routes, Route } from 'react-router-dom';
 import ProductPage from './components/products/ProductPage';
 import SearchPage from './components/pages/SearchPage';
 import NotFoundPage from './components/pages/NotFoundPage';
 import Footer from './components/footer/Footer';
 import BtnScrollTop from './components/BtnScrollTop';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import About from './components/pages/About';
 import Contacts from './components/pages/Contacts';
 import BottomHeader from './components/header/BottomHeader';
+// hooks
 import useAutoScrollToTop from './hooks/useAutoScrollToTop';
 
 function App() {
@@ -29,7 +31,7 @@ function App() {
 
     useAutoScrollToTop();
     return (
-        <div className='flex flex-col justify-between relative bg-stone-50 dark:bg-stone-800 text-text-secondary'>
+        <div className='flex flex-col justify-between relative bg-stone-50 dark:bg-stone-800 dark:text-gray-400 duration-1000'>
             <ToastContainer
                 theme={currentTheme === 'dark' ? 'dark' : 'light'}
             />

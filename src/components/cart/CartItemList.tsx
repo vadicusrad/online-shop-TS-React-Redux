@@ -13,7 +13,7 @@ const CartItemsList = () => {
     };
 
     return (
-        <div className='flex flex-col md:flex-row items-center md:items-start min-h-screen max-h-fit'>
+        <div className='flex flex-col md:flex-row items-center md:items-start'>
             <div className='md:w-2/3'>
                 {cartItems &&
                     cartItems.map((item) => {

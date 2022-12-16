@@ -8,7 +8,7 @@ const Cart: React.FC = () => {
     let navigate = useNavigate();
 
     return (
-        <div className='container mx-auto max-w-7xl pt-5 pb-10 min-h-screen px-10 mt-14 md:mt-0 dark:text-gray-400'>
+        <div className='container mx-auto max-w-7xl pt-5 pb-10 px-10 mt-14 md:mt-0 dark:text-gray-400'>
             <h1 className='text-3xl md:text-4xl md:text-left md:ml-6 mb-5 '>
                 Корзина
             </h1>
@@ -19,7 +19,7 @@ const Cart: React.FC = () => {
             )}
             <button
                 onClick={() => navigate(-1)}
-                className='h-10 w-44 rounded-sm text-white dark:bg-inherit dark:text-yellow-600 hover:border hover:border-yellow-600 mb-4 mt-6'
+                className='h-10 w-44 rounded-sm bg-gray-400 text-white dark:text-yellow-600 hover:bg-lime-500 dark:bg-inherit dark:hover:border dark:hover:border-yellow-600 mb-4 mt-6'
             >
                 Вернуться назад
             </button>
