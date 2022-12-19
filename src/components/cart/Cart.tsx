@@ -39,7 +39,7 @@ const Cart: React.FC = () => {
     }
 
     return (
-        <div className='container mx-auto max-w-7xl pt-5 pb-10 px-5 md:px-10 mt-14 md:mt-0 dark:text-gray-400'>
+        <div className='container mx-auto max-w-7xl pt-5 pb-10 px-5 md:px-10 mt-14 md:mt-0 dark:text-gray-400 '>
             <h1 className='text-3xl md:text-4xl md:text-left md:ml-6 mb-5 '>
                 Корзина
             </h1>

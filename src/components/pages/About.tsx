@@ -3,7 +3,7 @@ import LinkComponent from '../LinkComponent';
 
 const About = () => {
     return (
-        <div className='px-10 md:px-40 my-10  min-h-screen max-h-fit'>
+        <div className='px-10 md:px-40 my-16  min-h-screen max-h-fit'>
             <h1 className='text-3xl '>О приложении</h1>
             <div className='text-lg my-4'></div>
             <p>
@@ -54,7 +54,7 @@ const About = () => {
                 </li>
             </ul>
             <div className='mt-5 flex space-x-4'>
-                <LinkComponent to='/'>На главную страницу</LinkComponent>
+                <LinkComponent to='/'>На главную</LinkComponent>
 
                 <LinkComponent to='/contacts'>Мои контакты</LinkComponent>
             </div>
