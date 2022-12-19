@@ -10,8 +10,6 @@ interface Cart {
     order: CartItem[];
 }
 
-
-
 const initialState: Cart = {
     order: [],
 };
@@ -35,6 +33,9 @@ export const cartSlice = createSlice({
             state.order = state.order.filter(
                 (item) => item.id !== action.payload
             );
+        },
+        clearCart: (state) => {
+            state.order = [];
         },
         changeCartItemCounterUp: (state, action: PayloadAction<number>) => {
             const cartItem = state.order.find(
@@ -64,6 +65,7 @@ export const {
     deleteItemFromCart,
     changeCartItemCounterUp,
     changeCartItemCounterDown,
+    clearCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
