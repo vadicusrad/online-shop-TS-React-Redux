@@ -32,19 +32,18 @@ const ProductPage: React.FC = () => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: 'colored',
         });
     }
 
     return (
         <>
             {loadingStatus && (
-                <div className='flex justify-center min-h-screen max-h-fit'>
+                <div className='flex justify-center min-h-screen max-h-fit my-14'>
                     {loadingIcon}
                 </div>
             )}
             {currentProduct && (
-                <div className='flex flex-col items-center px-5 py-5'>
+                <div className='flex flex-col items-center px-5 py-10'>
                     <div className='flex flex-col md:flex-row lg:px-40 py-10 md:py-10  max-h-fit'>
                         <div className='h-[250px] w-full md:w-1/2 flex justify-center'>
                             <img

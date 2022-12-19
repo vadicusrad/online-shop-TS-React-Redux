@@ -37,7 +37,7 @@ const MobileHeader = () => {
             {/*Подложка-контейнер для бокового меню */}
             <div
                 onClick={() => handleOpenMobNav()}
-                className={`fixed top-14 h-screen w-screen bg-black/40 z-50 transition-all duration-500 ${
+                className={`fixed top-14 h-screen w-screen bg-black/70 z-50 transition-all duration-500 ${
                     openMobNav ? 'inset-0' : '-inset-full'
                 } md:hidden flex justify-end dark:text-white`}
             >
@@ -68,7 +68,9 @@ const MobileHeader = () => {
                                 </span>
                             ) : null}
                         </Link>
-                        <ThemeToggler />
+                        <div className='flex justify-end items-center'>
+                            <ThemeToggler />
+                        </div>
                     </span>
 
                     <Link onClick={() => handleOpenMobNav()} to='/'>
@@ -100,7 +102,7 @@ const MobileHeader = () => {
                         Контакты
                     </Link>
                     <Link onClick={() => handleOpenMobNav()} to='about'>
-                        О нас
+                        О приложении
                     </Link>
                 </div>
             </div>

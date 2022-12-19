@@ -42,7 +42,7 @@ const SortingTools = () => {
     }
 
     return (
-        <div className='mt-2  flex flex-col md:items-end md:flex-row md:flex-wrap align-center md:px-20 lg:px-40 space-y-3 dark:text-gray-300'>
+        <div className='mt-4  flex flex-col md:items-end md:flex-row md:flex-wrap align-center md:px-20 lg:px-40 space-y-3 dark:text-gray-300'>
             <div>
                 <span className='mr-2'>Категории:</span>
                 <select
@@ -81,7 +81,7 @@ const SortingTools = () => {
                 <span>
                     Цена:
                     <input
-                        className='h-6 border ml-2 w-20 dark:bg-slate-600 dark:text-gray-400 dark:border-none rounded-sm pl-1'
+                        className='h-6 border ml-2 w-16 sm:w-20 dark:bg-slate-600 dark:text-gray-400 dark:border-none rounded-sm pl-1'
                         type='number'
                         onChange={(e) =>
                             handleSetPriceRange({
@@ -92,10 +92,10 @@ const SortingTools = () => {
                         placeholder={`от ${priceRange.from}`}
                     />
                 </span>
-                <span className='ml-2'>
-                    До:{' '}
+                <span className='ml-2 '>
+                    До:
                     <input
-                        className='h-6 border ml-2 w-24 dark:bg-slate-600 dark:text-gray-400 dark:border-none rounded-sm pl-1'
+                        className='h-6 border ml-2 w-20 sm:w-24 dark:bg-slate-600 dark:text-gray-400 dark:border-none rounded-sm pl-1'
                         type='number'
                         onChange={(e) =>
                             handleSetPriceRange({

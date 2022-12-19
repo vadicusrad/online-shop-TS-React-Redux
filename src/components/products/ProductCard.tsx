@@ -23,7 +23,7 @@ const ProductCard: React.FC<Product> = (product) => {
     }
 
     return (
-        <div className='relative bg-white dark:bg-gray-700 h-[300px] dark:bg-card-dark  group w-full sm:w-[200px] md:w-[180px] flex flex-col justify-between hover:shadow-md p-4 overflow-hidden cursor-pointer rounded-sm'>
+        <div className='relative bg-white dark:bg-gray-700 h-[300px] dark:bg-card-dark  group w-full sm:w-[200px] md:w-[180px] flex flex-col justify-between hover:shadow-md p-4 overflow-hidden md:cursor-pointer rounded-sm '>
             <Link
                 to={`product${product.id}`}
                 className='flex flex-col items-center justify-between h-full'
@@ -43,11 +43,8 @@ const ProductCard: React.FC<Product> = (product) => {
                 </div>
             </Link>
             <div
-                //     className='absolute bottom-0 left-0  w-full h-0 group-hover:h-20 group-hover:bottom-10 bg-red-400/0  dark:group-hover:bg-gray-700 group-hover:bg-white  duration-300 flex justify-center
-
-                // '
-                className='absolute h-10 bottom-10 left-28 md:bottom-0 md:left-0  w-full md:h-0 group-hover:h-20 group-hover:bottom-10 bg-red-400/0  dark:group-hover:bg-gray-700 group-hover:bg-white  duration-300 flex justify-center
-                    sm:bottom-6 sm:left-12 
+                className='absolute m-0 bottom-0 right-5 md:w-full md:bottom-0 md:left-0 md:h-0 group-hover:h-20 group-hover:bottom-10 bg-red-400/0  dark:group-hover:bg-gray-700 group-hover:bg-white  duration-300 flex justify-center
+                    sm:bottom-0 sm:right-4 
                 '
             >
                 <ButtonComponent

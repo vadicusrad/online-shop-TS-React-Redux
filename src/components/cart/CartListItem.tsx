@@ -18,7 +18,7 @@ const CartListItem: React.FC<CartItem> = ({
     const dispatch = useAppDispatch();
 
     return (
-        <div className='p-4 h-32 relative flex shadow-sm z-10 dark:bg-gray-700 mb-2 mr-4'>
+        <div className='p-4 h-32 relative flex shadow-sm z-10 dark:bg-gray-700 mb-2 md:mr-4'>
             <span
                 className='absolute right-3 top-0 cursor-pointer text-slate-500'
                 onClick={() => dispatch(deleteItemFromCart(id))}

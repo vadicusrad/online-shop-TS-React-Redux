@@ -7,7 +7,7 @@ import vkIcon from '../../icons/vkIcon';
 
 const Footer = () => {
     return (
-        <footer className='w-full bg-stone-500 dark:bg-slate-800 text-text-light dark:text-gray-500 px-10 md:px-20 xl:px-40 py-5 md:py-10 pb-12'>
+        <footer className='w-full bg-stone-500 dark:bg-slate-800 text-text-light dark:text-gray-500 px-5 sm:px-10 md:px-20 xl:px-40 py-5 md:py-10 pb-12'>
             <a
                 href='/'
                 className='text-5xl text-lime-500 dark:text-yellow-600 cursor-pointer hidden md:block '
@@ -15,7 +15,7 @@ const Footer = () => {
                 LOGO
             </a>
             <div className='flex flex-row justify-between md:mt-6'>
-                <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 w-1/2 md:w-2/3 '>
+                <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 w-1/2 md:w-2/3 text-xs sm:text-sm md:text-base'>
                     <span className='flex flex-col space-y-2 md:space-y-4'>
                         <Link to='delivery'>Доставка</Link>
                         <Link to='payment'>Оплата</Link>
