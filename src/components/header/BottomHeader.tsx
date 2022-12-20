@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { setTheme } from '../../features/themeSlice';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import ThemeToggler from '../ThemeToggler';
 
 const BottomHeader = () => {
@@ -13,6 +11,7 @@ const BottomHeader = () => {
                 <Link to='delivery'>Доставка</Link>
                 <Link to='payment'>Оплата</Link>
                 <Link to='personal-area'>Личный кабинет</Link>
+                <Link to='/favorites'>Избранное</Link>
             </span>
 
             <ThemeToggler />

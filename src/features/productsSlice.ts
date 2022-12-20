@@ -4,7 +4,9 @@ import {
     isRejectedWithValue,
 } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { act } from 'react-dom/test-utils';
 
+// интерфейс продукта полученного из апи
 export interface Product {
     id: number;
     title: string;
@@ -15,11 +17,16 @@ export interface Product {
     rating: { rate: number; count: number };
     onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
+//  интерфейс продукта после добавления доп. свойств
+export interface AdaptedProduct extends Product {
+    inFavorites: boolean;
+    counter: number;
+}
 
 export interface ProductState {
-    allProducts: Product[];
-    visibleProducts: Product[];
-    currentProduct: Product | null;
+    allProducts: AdaptedProduct[];
+    visibleProducts: AdaptedProduct[];
+    currentProduct: AdaptedProduct | null;
     currentSortCondition: string;
     allCategories: CategoryList;
     currentCategory: string;
@@ -58,6 +65,15 @@ const initialState: ProductState = {
     loading: false,
     error: null,
 };
+// функция для адаптирования продуктов(добавления новых свойств)
+function adaptorGoods(goods: Product[]): AdaptedProduct[] {
+    return goods.map((item) => {
+        return { ...item, inFavorites: false, counter: 1 };
+    });
+    
+
+
+}
 
 export const getProducts = createAsyncThunk<
     Product[],
@@ -180,6 +196,13 @@ export const productSlice = createSlice({
         setCurrentSortCondition: (state, action: PayloadAction<string>) => {
             state.currentSortCondition = action.payload;
         },
+        toggleFavoriteProduct: (state, action: PayloadAction<number>) => {
+            state.visibleProducts.map((item) => {
+                if (item.id === action.payload) {
+                    item.inFavorites = !item.inFavorites;
+                }
+            });
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(getProducts.pending, (state) => {
@@ -188,8 +211,10 @@ export const productSlice = createSlice({
         });
         builder.addCase(getProducts.fulfilled, (state, action) => {
             state.loading = false;
-            state.allProducts = action.payload;
-            state.visibleProducts = action.payload;
+            // Добавляю в стейт товары после их адаптации(добавления новых свойств не предусмотренных апи)
+            const adaptedGoods = adaptorGoods(action.payload);
+            state.allProducts = adaptedGoods;
+            state.visibleProducts = adaptedGoods;
             // получаю минимальную и максимальную цену среди полученных продуктов
             let allProductsArrayClone = JSON.parse(
                 JSON.stringify(state.allProducts)
@@ -231,6 +256,7 @@ export const {
     setPriceRange,
     setCurrentCategory,
     setCurrentSortCondition,
+    toggleFavoriteProduct,
 } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -18,9 +18,7 @@ const MobileHeader = () => {
     return (
         <>
             {/*Хэдер для маленьких экранов*/}
-            <div
-                className={`fixed top-0 h-14 w-full bg-red-400 dark:bg-slate-800 duration-500 text-text-light dark:text-text-dark md:hidden flex justify-between items-center px-5 z-30`}
-            >
+            <div className='fixed top-0 h-14 w-full bg-red-400 dark:bg-slate-800 duration-500 text-text-light dark:text-text-dark md:hidden flex justify-between items-center px-5 z-30'>
                 <a
                     href='/'
                     className='text-xl md:text-5xl text-white cursor-pointer m-2'
@@ -76,6 +74,9 @@ const MobileHeader = () => {
                     <Link onClick={() => handleOpenMobNav()} to='/'>
                         Главная страница
                     </Link>
+                    <Link onClick={() => handleOpenMobNav()} to='/favorites'>
+                        Избранное
+                    </Link>
                     <Link onClick={() => handleOpenMobNav()} to='personal-area'>
                         Личный кабинет
                     </Link>
@@ -91,12 +92,6 @@ const MobileHeader = () => {
                         to='pick-up-points'
                     >
                         Пункты выдачи
-                    </Link>
-                    <Link onClick={() => handleOpenMobNav()} to='shops'>
-                        Магазины
-                    </Link>
-                    <Link onClick={() => handleOpenMobNav()} to='return-goods'>
-                        Возврат товаров
                     </Link>
                     <Link onClick={() => handleOpenMobNav()} to='contacts'>
                         Контакты

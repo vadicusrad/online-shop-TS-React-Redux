@@ -17,6 +17,7 @@ import Contacts from './components/pages/Contacts';
 import BottomHeader from './components/header/BottomHeader';
 // hooks
 import useAutoScrollToTop from './hooks/useAutoScrollToTop';
+import Favorites from './components/pages/Favorites';
 
 function App() {
     const currentTheme = useAppSelector((state) => state.theme.theme);
@@ -44,6 +45,7 @@ function App() {
                 <Route path='search' element={<SearchPage />} />
                 <Route path='about' element={<About />} />
                 <Route path='contacts' element={<Contacts />} />
+                <Route path='favorites' element={<Favorites />} />
                 <Route path='*' element={<NotFoundPage />} />
             </Routes>
             <Footer />

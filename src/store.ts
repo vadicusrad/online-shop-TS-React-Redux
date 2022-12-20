@@ -13,6 +13,7 @@ import {
     REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import favoritesSlice from './features/favoritesSlice';
 
 const persistConfig = {
     key: 'root',
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
     products: productsSlice,
     cart: cartSlice,
     theme: themeSlice,
+    favorites: favoritesSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

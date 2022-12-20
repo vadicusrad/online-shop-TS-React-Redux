@@ -10,7 +10,6 @@ import LinkComponent from '../LinkComponent';
 import ButtonComponent from '../ButtonComponent';
 const ProductPage: React.FC = () => {
     let params = useParams();
-    let navigate = useNavigate();
     const currentProductId = Number(params.id);
     const dispatch = useAppDispatch();
     const currentProduct = useAppSelector(
@@ -35,6 +34,19 @@ const ProductPage: React.FC = () => {
         });
     }
 
+    function handleGetAndCopyUrl() {
+        navigator.clipboard.writeText(window.location.href);
+        toast.success('Ссылка на страницу скопирована', {
+            position: 'bottom-right',
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+
     return (
         <>
             {loadingStatus && (
@@ -43,7 +55,7 @@ const ProductPage: React.FC = () => {
                 </div>
             )}
             {currentProduct && (
-                <div className='flex flex-col items-center px-5 py-10'>
+                <div className='flex flex-col items-center px-5 py-10 md:py-0'>
                     <div className='flex flex-col md:flex-row lg:px-40 py-10 md:py-10  max-h-fit'>
                         <div className='h-[250px] w-full md:w-1/2 flex justify-center'>
                             <img
@@ -64,12 +76,19 @@ const ProductPage: React.FC = () => {
                                 ${currentProduct.price}
                             </span>
 
-                            <ButtonComponent
-                                children='В корзину'
-                                onClick={() =>
-                                    handleAdditemInCart(currentProduct)
-                                }
-                            />
+                            <div className='flex justify-between w-full'>
+                                <ButtonComponent
+                                    children='В корзину'
+                                    onClick={() =>
+                                        handleAdditemInCart(currentProduct)
+                                    }
+                                />
+
+                                <ButtonComponent
+                                    children='Поделиться ссылкой'
+                                    onClick={() => handleGetAndCopyUrl()}
+                                />
+                            </div>
 
                             <hr className='w-full mb-4' />
                             <p>{currentProduct.description}</p>

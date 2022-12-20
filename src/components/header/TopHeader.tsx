@@ -9,8 +9,6 @@ const TopHeader = () => {
                 <Link to='delivery'>Доставка</Link>
                 <Link to='payment'>Оплата</Link>
                 <Link to='pick-up-points'>Пункты выдачи</Link>
-                <Link to='shops'>Магазины</Link>
-                <Link to='return-goods'>Возврат товаров</Link>
             </span>
         </div>
     );
