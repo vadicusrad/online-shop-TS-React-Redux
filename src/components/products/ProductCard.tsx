@@ -1,12 +1,20 @@
 import React from 'react';
 import { addItemToCart } from '../../features/cartSlice';
-import { Product } from '../../features/productsSlice';
+import {
+    AdaptedProduct,
+    toggleFavoriteProduct,
+} from '../../features/productsSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { Link } from 'react-router-dom';
-import { Theme, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import ButtonComponent from '../ButtonComponent';
+import {
+    addItemToFavorites,
+    deleteItemFromFavorites,
+} from '../../features/favoritesSlice';
+import heartIcon from '../../icons/hearticon';
 
-const ProductCard: React.FC<Product> = (product) => {
+const ProductCard: React.FC<AdaptedProduct> = (product) => {
     const dispatch = useAppDispatch();
 
     function handleAdditemInCart() {
@@ -20,6 +28,34 @@ const ProductCard: React.FC<Product> = (product) => {
             draggable: true,
             progress: undefined,
         });
+    }
+
+    function handleToggleitemInFavorites() {
+        if (product.inFavorites) {
+            dispatch(deleteItemFromFavorites(product.id));
+            dispatch(toggleFavoriteProduct(product.id));
+            toast.success('Товар удален из избранного', {
+                position: 'bottom-right',
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        } else {
+            dispatch(addItemToFavorites(product));
+            dispatch(toggleFavoriteProduct(product.id));
+            toast.success('Товар добавлен в избранное', {
+                position: 'bottom-right',
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
     }
 
     return (
@@ -43,13 +79,14 @@ const ProductCard: React.FC<Product> = (product) => {
                 </div>
             </Link>
             <div
-                className='absolute m-0 bottom-0 right-5 md:w-full md:bottom-0 md:left-0 md:h-0 group-hover:h-20 group-hover:bottom-10 bg-red-400/0  dark:group-hover:bg-gray-700 group-hover:bg-white  duration-300 flex justify-center
-                    sm:bottom-0 sm:right-4 
+                className='absolute m-0 h-fit bottom-0 right-5 md:w-full md:bottom-0 md:left-0 md:h-0 group-hover:h-20 md:group-hover:bottom-10 bg-red-400/0  dark:group-hover:bg-gray-700 group-hover:bg-white  duration-300 flex justify-center
+                    sm:-bottom-2 sm:right-2 
                 '
             >
                 <ButtonComponent
                     onClick={() => handleAdditemInCart()}
                     children='В корзину'
+                    className='sm:h-8'
                 />
             </div>
         </div>
