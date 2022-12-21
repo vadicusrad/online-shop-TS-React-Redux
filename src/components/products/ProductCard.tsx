@@ -8,11 +8,6 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ButtonComponent from '../ButtonComponent';
-import {
-    addItemToFavorites,
-    deleteItemFromFavorites,
-} from '../../features/favoritesSlice';
-import heartIcon from '../../icons/hearticon';
 
 const ProductCard: React.FC<AdaptedProduct> = (product) => {
     const dispatch = useAppDispatch();
@@ -28,34 +23,6 @@ const ProductCard: React.FC<AdaptedProduct> = (product) => {
             draggable: true,
             progress: undefined,
         });
-    }
-
-    function handleToggleitemInFavorites() {
-        if (product.inFavorites) {
-            dispatch(deleteItemFromFavorites(product.id));
-            dispatch(toggleFavoriteProduct(product.id));
-            toast.success('Товар удален из избранного', {
-                position: 'bottom-right',
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-        } else {
-            dispatch(addItemToFavorites(product));
-            dispatch(toggleFavoriteProduct(product.id));
-            toast.success('Товар добавлен в избранное', {
-                position: 'bottom-right',
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-        }
     }
 
     return (

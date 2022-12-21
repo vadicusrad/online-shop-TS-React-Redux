@@ -28,7 +28,11 @@ const CartItemsList = () => {
 
                 <ButtonComponent
                     children='Оформить заказ'
-                    onClick={() => console.log('Здесь будет оформление заказа')}
+                    onClick={() =>
+                        alert(
+                            'Далее здесь будет оформление заказа. Функция в разработке.'
+                        )
+                    }
                 />
             </div>
         </div>

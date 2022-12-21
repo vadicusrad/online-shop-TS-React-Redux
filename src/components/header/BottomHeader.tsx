@@ -8,10 +8,7 @@ const BottomHeader = () => {
             <span className='flex md:flex items-center space-x-6'>
                 <Link to='about'>О приложении</Link>
                 <Link to='contacts'>Контакты</Link>
-                <Link to='delivery'>Доставка</Link>
-                <Link to='payment'>Оплата</Link>
                 <Link to='personal-area'>Личный кабинет</Link>
-                <Link to='/favorites'>Избранное</Link>
             </span>
 
             <ThemeToggler />

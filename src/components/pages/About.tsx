@@ -7,26 +7,26 @@ const About = () => {
             <h1 className='text-3xl '>О приложении</h1>
             <div className='text-lg my-4'></div>
             <p>
-                Это пет проект для отработки навыков написания работающего,
+                Это пет-проект для отработки навыков написания работающего,
                 красивого кода.
             </p>
             <h2 className='font-semibold my-2'>
                 Используются следующие технологии:
             </h2>
-            <ul>
+            <ul className='marker:text-blue-400 list-disc pl-5'>
                 <li>JavaScript</li>
                 <li>React</li>
                 <li>ReduxToolkit</li>
-                <li>Redux persist</li>
+                <li>Redux Persist</li>
                 <li>Tailwind CSS</li>
-                <li>React router dom</li>
+                <li>React router dom 6</li>
                 <li>Toastify</li>
             </ul>
 
             <h2 className='font-semibold my-2'>
-                На данный момент реализованы следующие функции:
+                Реализованы следующие функции:
             </h2>
-            <ul>
+            <ul className='marker:text-gray-400 list-disc pl-5'>
                 <li>Получение и отображение данных из удаленного сервера</li>
                 <li>Фильтрация товаров по цене</li>
                 <li>Фильтрация товаров по категории</li>
@@ -48,9 +48,10 @@ const About = () => {
                     памяти браузера
                 </li>
                 <li>
-                    Реализованы иные маленькие, но важные функции например
+                    Реализованы иные маленькие, но классные функции, например
                     кнопка возврата наверх, запрет скролла при открытом меню,
-                    возрат наверх при смене страницы и т.д.
+                    возрат наверх при смене страницы, копирование ссылки на
+                    страницу товара по клику на кнопку и т.д.
                 </li>
             </ul>
             <div className='mt-5 flex space-x-4'>

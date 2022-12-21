@@ -74,9 +74,6 @@ const MobileHeader = () => {
                     <Link onClick={() => handleOpenMobNav()} to='/'>
                         Главная страница
                     </Link>
-                    <Link onClick={() => handleOpenMobNav()} to='/favorites'>
-                        Избранное
-                    </Link>
                     <Link onClick={() => handleOpenMobNav()} to='personal-area'>
                         Личный кабинет
                     </Link>
