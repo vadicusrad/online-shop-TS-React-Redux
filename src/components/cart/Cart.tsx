@@ -46,7 +46,7 @@ const Cart: React.FC = () => {
             {cartItems.length ? (
                 <CartItemsList />
             ) : (
-                <p className='mt-14 text-xl md:text-2xl px-10 h-52'>
+                <p className='mt-16 text-xl md:text-2xl px-10 h-36'>
                     Ваша корзина пуста
                 </p>
             )}

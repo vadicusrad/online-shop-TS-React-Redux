@@ -31,7 +31,7 @@ function App() {
 
     useAutoScrollToTop();
     return (
-        <div className='flex flex-col justify-between relative bg-stone-50 dark:bg-stone-800 dark:text-gray-400 duration-1000'>
+        <div className='flex flex-col justify-between relative bg-stone-50 dark:bg-stone-800 dark:text-gray-400 duration-1000 min-h-screen'>
             <ToastContainer
                 theme={currentTheme === 'dark' ? 'dark' : 'light'}
             />
