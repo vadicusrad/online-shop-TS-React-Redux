@@ -7,6 +7,7 @@ import {
 } from '../../features/cartSlice';
 import { CartItem } from '../../features/cartSlice';
 import { useAppDispatch } from '../../hooks/hooks';
+import closeIcon from '../../icons/closeIcon';
 
 const CartListItem: React.FC<CartItem> = ({
     title,
@@ -18,20 +19,20 @@ const CartListItem: React.FC<CartItem> = ({
     const dispatch = useAppDispatch();
 
     return (
-        <div className='p-4 h-32 relative flex shadow-sm z-10 dark:bg-gray-700 mb-2 md:mr-4'>
+        <div className='md:mr-2 pl-3 pr-8 py-2 h-32 relative flex shadow-sm z-10 dark:bg-gray-700 mb-2'>
             <span
-                className='absolute right-3 top-0 cursor-pointer text-slate-500'
+                className='absolute right-1 top-1 cursor-pointer text-slate-400 hover:text-yellow-600'
                 onClick={() => dispatch(deleteItemFromCart(id))}
             >
-                x
+                {closeIcon}
             </span>
             <img
-                className='min-w-[80px] w-[80px] mr-5 md:mr-8 object-contain flex justify-center'
+                className='min-w-[80px] w-[80px] mr-3 md:mr-8 object-cover flex justify-center'
                 src={image}
                 alt={title}
             />
             <div className='flex flex-col justify-between '>
-                <h2 className='font-bold lg:text-xl overflow-hidden '>
+                <h2 className='font-bold lg:text-xl overflow-hidden h-[3rem]'>
                     <Link to={`/product${id}`}>{title}</Link>
                 </h2>
                 <p className='text-yellow-600 '>${price}</p>

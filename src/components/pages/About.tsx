@@ -3,10 +3,10 @@ import LinkComponent from '../LinkComponent';
 
 const About = () => {
     return (
-        <div className='px-10 md:px-40 my-16'>
+        <div>
             <h1 className='text-3xl '>О приложении</h1>
-            <div className='text-lg my-4'></div>
-            <p>
+
+            <p className='my-4'>
                 Это пет-проект для отработки навыков написания работающего,
                 красивого кода.
             </p>

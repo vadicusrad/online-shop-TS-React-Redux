@@ -32,6 +32,7 @@ const MiddleHeader = () => {
         if (searchInput.length) {
             dispatch(filterBySearchString(searchInput));
             navigate('search');
+            setSearchInput('');
         }
     }
 

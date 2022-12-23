@@ -23,28 +23,12 @@ const ProductPage: React.FC = () => {
 
     function handleAdditemInCart(product: Product) {
         dispatch(addItemToCart(product));
-        toast.success('Товар добавлен в корзину', {
-            position: 'bottom-right',
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+        toast.success('Товар добавлен в корзину');
     }
 
     function handleGetAndCopyUrl() {
         navigator.clipboard.writeText(window.location.href);
-        toast.success('Ссылка на страницу скопирована', {
-            position: 'bottom-right',
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+        toast.success('Ссылка на страницу скопирована');
     }
 
     return (
@@ -55,8 +39,8 @@ const ProductPage: React.FC = () => {
                 </div>
             )}
             {currentProduct && (
-                <div className='flex flex-col items-center px-5 py-10 md:py-0'>
-                    <div className='flex flex-col md:flex-row lg:px-40 py-10 md:py-10  max-h-fit'>
+                <div className='flex flex-col items-center px-5 md:py-0'>
+                    <div className='flex flex-col md:flex-row'>
                         <div className='h-[250px] w-full md:w-1/2 flex justify-center'>
                             <img
                                 className='object-scale-down'

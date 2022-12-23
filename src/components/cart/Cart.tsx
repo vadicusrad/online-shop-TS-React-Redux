@@ -16,46 +16,26 @@ const Cart: React.FC = () => {
     function handleClearCart() {
         dispatch(clearCart());
         if (cartItems.length) {
-            toast.success('Корзина очищена', {
-                position: 'bottom-right',
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            toast.success('Корзина очищена');
         } else {
-            toast.success('Корзина уже пуста', {
-                position: 'bottom-right',
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            toast.success('Корзина уже пуста');
         }
     }
 
     return (
-        <div className='container mx-auto max-w-7xl pt-5 pb-10 px-5 md:px-10 mt-14 md:mt-0 dark:text-gray-400 '>
-            <h1 className='text-3xl md:text-4xl md:text-left md:ml-6 mb-5 '>
-                Корзина
-            </h1>
+        <div className='mx-auto dark:text-gray-400 '>
+            <h1 className='text-3xl'>Корзина</h1>
             {cartItems.length ? (
                 <CartItemsList />
             ) : (
-                <p className='mt-16 text-xl md:text-2xl px-10 h-36'>
-                    Ваша корзина пуста
-                </p>
+                <p className='mt-16 text-lg h-36'>Ваша корзина пуста</p>
             )}
 
             {/* <ButtonComponent
                 children='Вернуться назад'
                 onClick={() => navigate(-1)}
             /> */}
-            <div className='flex justify-between md:justify-around'>
+            <div className='flex justify-between sm:justify-start space-x-9 md:space-x-10'>
                 <LinkComponent
                     className='text-sm sm:text-base'
                     children='Вернуться назад'

@@ -9,7 +9,7 @@ const Header: React.FC = () => {
             {/*Хэдер и боковое меню на маленьких экранах */}
             <MobileHeader />
             {/* Хэдер на больших экранах */}
-            <div className='hidden md:flex flex-col md:w-full xl:w-[1900px] m-auto text-xs relative'>
+            <div className='hidden md:flex flex-col md:w-full  m-auto text-xs relative'>
                 <TopHeader />
                 <MiddleHeader />
             </div>

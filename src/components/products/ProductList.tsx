@@ -22,9 +22,9 @@ const ProductList: React.FC = () => {
             {loadingIcon}
         </div>
     ) : (
-        <div className='px-5 md:px-10 mt-14 md:mt-0'>
+        <div className='md:mt-0'>
             <SortingTools />
-            <div className='container mx-auto grid grid-cols-1  sm:grid-cols-2 md:grid-cols-4  lg:grid-cols-5 justify-items-center gap-4 max-w-7xl py-14 min-h-screen max-h-fit'>
+            <div className='container mx-auto grid grid-cols-1  sm:grid-cols-2 md:grid-cols-4  lg:grid-cols-5 justify-items-center gap-4 max-w-7xl py-14'>
                 {visibleProducts.length ? (
                     visibleProducts.map((product) => {
                         return <ProductCard key={product.id} {...product} />;

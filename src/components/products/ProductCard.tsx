@@ -14,15 +14,7 @@ const ProductCard: React.FC<AdaptedProduct> = (product) => {
 
     function handleAdditemInCart() {
         dispatch(addItemToCart(product));
-        toast.success('Товар добавлен в корзину', {
-            position: 'bottom-right',
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+        toast.success('Товар добавлен в корзину');
     }
 
     return (
@@ -46,7 +38,7 @@ const ProductCard: React.FC<AdaptedProduct> = (product) => {
                 </div>
             </Link>
             <div
-                className='absolute m-0 h-fit bottom-0 right-5 md:w-full md:bottom-0 md:left-0 md:h-0 group-hover:h-20 md:group-hover:bottom-10 bg-red-400/0  dark:group-hover:bg-gray-700 group-hover:bg-white  duration-300 flex justify-center
+                className='absolute m-0 h-fit bottom-0 right-5 md:w-full md:bottom-0 md:left-0 md:h-0 md:group-hover:h-20 md:group-hover:bottom-10 bg-red-400/0  dark:group-hover:bg-gray-700 group-hover:bg-white  duration-300 flex justify-center
                     sm:-bottom-2 sm:right-2 
                 '
             >

@@ -3,7 +3,7 @@ import LinkComponent from '../LinkComponent';
 
 const Contacts = () => {
     return (
-        <div className='px-10 md:px-40 py-16 h-96'>
+        <div>
             <h1 className='text-3xl '>Контакты</h1>
             <p className='text-lg my-4'>
                 Связаться со мной можно в{' '}
