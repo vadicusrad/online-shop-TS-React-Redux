@@ -28,7 +28,7 @@ const ProductCard: React.FC<AdaptedProduct> = (product) => {
                     src={product.image}
                     alt={product.title}
                 />
-                <div className='h-full flex flex-col justify-between overflow-hidden'>
+                <div className='h-full w-full flex flex-col justify-between overflow-hidden'>
                     <span className='text-ellipsis overflow-hidden ... w-full  mt-4 dark:text-gray-400'>
                         {product.title}
                     </span>

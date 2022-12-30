@@ -1,10 +1,6 @@
-import {
-    createAsyncThunk,
-    createSlice,
-    isRejectedWithValue,
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { act } from 'react-dom/test-utils';
+import getData from '../api/getData';
 
 // интерфейс продукта полученного из апи
 export interface Product {
@@ -65,26 +61,24 @@ const initialState: ProductState = {
     loading: false,
     error: null,
 };
-// функция для адаптирования продуктов(добавления новых свойств)
-function adaptorGoods(goods: Product[]): AdaptedProduct[] {
+
+function adaptGoods(goods: Product[]): AdaptedProduct[] {
     return goods.map((item) => {
         return { ...item, inFavorites: false, counter: 1 };
     });
-    
-
-
 }
 
 export const getProducts = createAsyncThunk<
     Product[],
-    undefined,
+    void,
     { rejectValue: string }
 >('products/getProducts', async function (_, { rejectWithValue }) {
-    const response = await fetch('https://fakestoreapi.com/products');
-    if (!response.ok) {
+    const response = getData({ urlModificator: '' });
+
+    if (!(await response).ok) {
         return rejectWithValue('Server error!');
     }
-    const data = await response.json();
+    const data = await (await response).json();
     return data;
 });
 
@@ -93,9 +87,7 @@ export const getAllCategories = createAsyncThunk<
     undefined,
     { rejectValue: string }
 >('products/getAllCategories', async function (_, { rejectWithValue }) {
-    const response = await fetch(
-        'https://fakestoreapi.com/products/categories'
-    );
+    const response = await getData({ urlModificator: 'categories' });
     if (!response.ok) {
         return rejectWithValue('Server error!');
     }
@@ -107,9 +99,7 @@ export const getAllCategories = createAsyncThunk<
 export const getSingleProduct = createAsyncThunk(
     'products/getSingleProduct',
     async function (productId: number, { rejectWithValue }) {
-        const response = await fetch(
-            `https://fakestoreapi.com/products/${productId}`
-        );
+        const response = await getData({ urlModificator: productId });
         if (!response.ok) {
             return rejectWithValue('Server error!');
         }
@@ -212,7 +202,7 @@ export const productSlice = createSlice({
         builder.addCase(getProducts.fulfilled, (state, action) => {
             state.loading = false;
             // Добавляю в стейт товары после их адаптации(добавления новых свойств не предусмотренных апи)
-            const adaptedGoods = adaptorGoods(action.payload);
+            const adaptedGoods = adaptGoods(action.payload);
             state.allProducts = adaptedGoods;
             state.visibleProducts = adaptedGoods;
             // получаю минимальную и максимальную цену среди полученных продуктов
@@ -228,6 +218,7 @@ export const productSlice = createSlice({
             state.priceRange.from = sortingDescendingArr[0].price; //  первый элемент с наименьшей ценой
             state.priceRange.to = sortingDescendingArr.slice(-1)[0].price; //  последний элемент с наибольшей ценой
         });
+
         builder.addCase(getSingleProduct.pending, (state) => {
             state.currentProduct = null;
             state.loading = true;

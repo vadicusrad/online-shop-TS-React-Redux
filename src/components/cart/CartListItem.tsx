@@ -7,7 +7,7 @@ import {
 } from '../../features/cartSlice';
 import { CartItem } from '../../features/cartSlice';
 import { useAppDispatch } from '../../hooks/hooks';
-import closeIcon from '../../icons/closeIcon';
+import CloseIcon from '../../icons/CloseIcon';
 
 const CartListItem: React.FC<CartItem> = ({
     title,
@@ -24,7 +24,7 @@ const CartListItem: React.FC<CartItem> = ({
                 className='absolute right-1 top-1 cursor-pointer text-slate-400 hover:text-yellow-600'
                 onClick={() => dispatch(deleteItemFromCart(id))}
             >
-                {closeIcon}
+                <CloseIcon />
             </span>
             <img
                 className='min-w-[80px] w-[80px] mr-3 md:mr-8 object-cover flex justify-center'

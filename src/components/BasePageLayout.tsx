@@ -6,13 +6,14 @@ import Contacts from './pages/Contacts';
 import NotFoundPage from './pages/NotFoundPage';
 import SearchPage from './pages/SearchPage';
 import ProductList from './products/ProductList';
+import ProductListWrapper from './products/ProductListWrapper';
 import ProductPage from './products/ProductPage';
 
 const BasePageLayout = () => {
     return (
         <div className='min-h-[600px] px-3 sm:px-6 md:px-10 lg:px-40 w-full lg:w-[1440px] no-sens:w-[1024px] m-auto  pt-20 pb-10 md:py-10 '>
             <Routes>
-                <Route index element={<ProductList />} />
+                <Route index element={<ProductListWrapper />} />
                 <Route path='cart' element={<Cart />} />
                 <Route path='product:id' element={<ProductPage />} />
                 <Route path='search' element={<SearchPage />} />

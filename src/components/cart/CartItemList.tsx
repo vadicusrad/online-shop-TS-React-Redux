@@ -6,11 +6,11 @@ import CartListItem from './CartListItem';
 const CartItemsList = () => {
     const cartItems = useAppSelector((state) => state.cart.order);
     const cartItemsSumm = () => {
-        let sum = 0;
-        cartItems.forEach((item) => {
-            sum += item.price * item.counter;
-        });
-        return sum.toFixed(2);
+        return cartItems
+            .reduce((sum, item) => {
+                return sum + item.price * item.counter;
+            }, 0)
+            .toFixed(2);
     };
 
     return (

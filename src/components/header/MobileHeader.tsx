@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useAppSelector } from '../../hooks/hooks';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
-import burger from '../../icons/burger';
-import cartIcon from '../../icons/cartIcon';
-import personIcon from '../../icons/personIcon';
 import { Link } from 'react-router-dom';
 import ThemeToggler from '../ThemeToggler';
+import BurgerIcon from '../../icons/BurgerIcon';
+import PersonIcon from '../../icons/PersonIcon';
+import CartIcon from '../../icons/CartIcon';
 
 const MobileHeader = () => {
     const [openMobNav, setOpenMobNav] = useState(false);
@@ -27,14 +27,14 @@ const MobileHeader = () => {
                 </a>
                 <span
                     className='cursor-pointer text-white'
-                    onClick={() => handleOpenMobNav()}
+                    onClick={handleOpenMobNav}
                 >
-                    {burger}
+                    <BurgerIcon />
                 </span>
             </div>
             {/*Подложка-контейнер для бокового меню */}
             <div
-                onClick={() => handleOpenMobNav()}
+                onClick={handleOpenMobNav}
                 className={`fixed top-14 h-screen w-screen bg-black/70 z-50 transition-all duration-500 ${
                     openMobNav ? 'inset-0' : '-inset-full'
                 } md:hidden flex justify-end dark:text-white`}
@@ -48,18 +48,15 @@ const MobileHeader = () => {
                     onClick={(e) => e.stopPropagation()}
                 >
                     <span className='flex justify-between mb-8'>
-                        <Link
-                            onClick={() => handleOpenMobNav()}
-                            to='personal-area'
-                        >
-                            {personIcon}
+                        <Link onClick={handleOpenMobNav} to='personal-area'>
+                            <PersonIcon />
                         </Link>
                         <Link
-                            onClick={() => handleOpenMobNav()}
+                            onClick={handleOpenMobNav}
                             className='relative flex justify-end'
                             to='cart'
                         >
-                            {cartIcon}
+                            <CartIcon />
                             {cartItems.length ? (
                                 <span className='absolute top-1 -right-6 rounded-xl bg-lime-500 w-6 h-6 flex justify-center items-center text-white'>
                                     {cartItems.length}
@@ -71,29 +68,26 @@ const MobileHeader = () => {
                         </div>
                     </span>
 
-                    <Link onClick={() => handleOpenMobNav()} to='/'>
+                    <Link onClick={handleOpenMobNav} to='/'>
                         Главная страница
                     </Link>
-                    <Link onClick={() => handleOpenMobNav()} to='personal-area'>
+                    <Link onClick={handleOpenMobNav} to='personal-area'>
                         Личный кабинет
                     </Link>
-                    <Link onClick={() => handleOpenMobNav()} to='payment'>
+                    <Link onClick={handleOpenMobNav} to='payment'>
                         Оплата
                     </Link>
-                    <Link onClick={() => handleOpenMobNav()} to='delivery'>
+                    <Link onClick={handleOpenMobNav} to='delivery'>
                         Доставка
                     </Link>
 
-                    <Link
-                        onClick={() => handleOpenMobNav()}
-                        to='pick-up-points'
-                    >
+                    <Link onClick={handleOpenMobNav} to='pick-up-points'>
                         Пункты выдачи
                     </Link>
-                    <Link onClick={() => handleOpenMobNav()} to='contacts'>
+                    <Link onClick={handleOpenMobNav} to='contacts'>
                         Контакты
                     </Link>
-                    <Link onClick={() => handleOpenMobNav()} to='about'>
+                    <Link onClick={handleOpenMobNav} to='about'>
                         О приложении
                     </Link>
                 </div>

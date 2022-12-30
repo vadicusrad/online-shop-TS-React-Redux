@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { addItemToCart } from '../../features/cartSlice';
 import { getSingleProduct } from '../../features/productsSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import loadingIcon from '../../icons/loadingIcon';
 import { Product } from '../../features/productsSlice';
 import LinkComponent from '../LinkComponent';
 import ButtonComponent from '../ButtonComponent';
+import LoadingIcon from '../../icons/LoadingIcon';
+
 const ProductPage: React.FC = () => {
     let params = useParams();
     const currentProductId = Number(params.id);
@@ -35,7 +36,7 @@ const ProductPage: React.FC = () => {
         <>
             {loadingStatus && (
                 <div className='flex justify-center min-h-screen max-h-fit my-14'>
-                    {loadingIcon}
+                    <LoadingIcon />
                 </div>
             )}
             {currentProduct && (

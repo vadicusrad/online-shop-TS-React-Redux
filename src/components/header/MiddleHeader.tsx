@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { filterBySearchString } from '../../features/productsSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { useScrollBlock } from '../../hooks/useScrollBlock';
-import cartIcon from '../../icons/cartIcon';
-import lupeIcon from '../../icons/lupeIcon';
-import personIcon from '../../icons/personIcon';
+import CartIcon from '../../icons/CartIcon';
+import LupeIcon from '../../icons/LupeIcon';
+import PersonIcon from '../../icons/PersonIcon';
+import Logo from '../Logo';
 
 const MiddleHeader = () => {
     // стейт для инпута поиска
@@ -38,12 +38,7 @@ const MiddleHeader = () => {
 
     return (
         <div className='bg-stone-200 dark:bg-stone-700 text-text-secondary hidden h-28 md:flex justify-between items-center px-5  md:px-20 lg:px-40 '>
-            <a
-                href='/'
-                className='text-xl md:text-5xl text-lime-500 dark:text-yellow-600 cursor-pointer m-2'
-            >
-                LOGO
-            </a>
+            <Logo />
             {/* инпут для поиска */}
             <span className='relative'>
                 <input
@@ -58,15 +53,15 @@ const MiddleHeader = () => {
                     className='dark:text-yellow-600'
                     onClick={handleSearchStringChange}
                 >
-                    {lupeIcon}
+                    <LupeIcon />
                 </span>
             </span>
             <span className='flex space-x-4 dark:text-yellow-600'>
                 <Link className='text-text-dark' to='personal-area'>
-                    {personIcon}
+                    <PersonIcon />
                 </Link>
                 <Link className='relative text-text-dark' to='cart'>
-                    {cartIcon}
+                    <CartIcon />
                     {cartItems.length ? (
                         <span className='absolute top-1 left-8 rounded-xl bg-lime-500 w-6 h-6 flex justify-center items-center text-white'>
                             {cartItems.length}

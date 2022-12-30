@@ -1,4 +1,4 @@
-const burgerIcon = <svg
+const BurgerIcon = () => <svg
     xmlns='http://www.w3.org/2000/svg'
     fill='none'
     viewBox='0 0 24 24'
@@ -13,4 +13,4 @@ const burgerIcon = <svg
     />
 </svg>
 
-export default burgerIcon
+export default BurgerIcon

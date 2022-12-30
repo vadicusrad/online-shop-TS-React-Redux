@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import upArrow from '../icons/upArrow';
+import UpArrow from '../icons/UpArrow';
 
 const BtnScrollTop: React.FC = () => {
     //динамически добавляемые стили для кнопки вверх
-    const [upBtnVisible, setUpBtnVisible] = useState('opacity-0 -right-10');
+    const [upperButtonVisible, setUpperButtonVisible] = useState(
+        'opacity-0 -right-10'
+    );
 
     // функция плавного возврата на верх страницы
-    function scrollToUp() {
+    function scrollToTop() {
         window.scrollTo({
             top: 0,
             left: 0,
@@ -18,20 +20,19 @@ const BtnScrollTop: React.FC = () => {
         window.addEventListener('scroll', () => {
             // при скролле более 400 изменяет стили кнопки
             if (window.scrollY > 400) {
-                setUpBtnVisible('opacity-100 cursor-pointer');
-            } else {
-                setUpBtnVisible('opacity-0 -right-10 ');
+                return setUpperButtonVisible('opacity-100 cursor-pointer');
             }
+            return setUpperButtonVisible('opacity-0 -right-10 ');
         });
     }, []);
 
     return (
         <div
             className={`w-10 h-10 bg-red-400 dark:bg-yellow-600 fixed bottom-5 right-3 duration-1000 text-white rounded-sm flex justify-center items-center
-            ${upBtnVisible} hover:mb-2 hover:pb-2 shadow-md`}
-            onClick={() => scrollToUp()}
+            ${upperButtonVisible} hover:mb-2 hover:pb-2 shadow-md`}
+            onClick={scrollToTop}
         >
-            {upArrow}
+            <UpArrow />
         </div>
     );
 };

@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const loadingIcon =
+const LoadingIcon = () => (
     <svg
         display='block'
         // margin='auto'
@@ -28,6 +28,6 @@ const loadingIcon =
             />
         </path>
     </svg>
+);
 
-
-export default loadingIcon
+export default LoadingIcon;
